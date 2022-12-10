@@ -50,12 +50,12 @@ p {
 }
 
 .sidebar-wrapper {
-  background: #FDA246;
+  background: #F39E38;
   position: absolute;
   right: 0;
   width: 240px;
   height: 100%;
-  max-height: 300px;
+  max-height: 600px;
   
   color: #fff;
 }
