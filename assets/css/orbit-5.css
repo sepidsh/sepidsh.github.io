@@ -9,7 +9,7 @@
 body {
   font-family: "Roboto", sans-serif;
   color: #545E6C;
-  background: #FFFFFF;
+  background: #FFF5EE;
   font-size: 14px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -50,7 +50,7 @@ p {
 }
 
 .sidebar-wrapper {
-  background: #FD85E;
+  background: #F39E38;
   position: absolute;
   right: 0;
   width: 240px;
