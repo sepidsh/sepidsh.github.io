@@ -55,7 +55,8 @@ p {
   right: 0;
   width: 240px;
   height: 100%;
-  min-height: 800px;
+  max-height=300px;
+  
   color: #fff;
 }
 .sidebar-wrapper a {
