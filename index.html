@@ -104,114 +104,6 @@
     <div class="topnav-inner">
       <nav class="tabs" aria-label="Primary">
         <a href="#about">About</a>
-        <a href="#news">News</a>
-        <a href="#publications">Publications</a>
-        <a href="#experience">Experience</a>
-        <a href="#teaching">Teaching</a>
-      </nav>
-    </div>
-  </header>
-
-  <main class="wrapper">
-    <!-- Sidebar -->
-    <aside class="sidebar">
-      <div class="profile">
-        <img class="avatar" src="images/profpic.jpeg" alt="Sepidehsadat Hosseini" />
-        <div>
-          <h1>Sepidehsadat Hosseini</h1>
-          <div class="role">Machine Learning Researcher @ RBC Borealis AI</div>
-        </div>
-      </div>
-
-      <div class="chips" aria-label="Research areas">
-        <span class="chip">Computer Vision</span>
-        <span class="chip">Geometric Deep Learning</span>
-        <span class="chip">Anomaly Detection</span>
-        <span class="chip">Time Series Forecasting</span>
-      </div>
-
-      <div class="links" aria-label="Social links">
-        <a href="mailto:sepidh@sfu.ca" title="Email"><i class="bi bi-envelope"></i></a>
-        <a href="https://www.linkedin.com/in/sepidh/" title="LinkedIn"><i class="bi bi-linkedin"></i></a>
-        <a href="https://scholar.google.co.kr/citations?user=G0OoPZAAAAAJ&hl=en" title="Google Scholar"><i class="ai ai-google-scholar"></i></a>
-        <a href="https://github.com/sepidsh" title="GitHub"><i class="bi bi-github"></i></a>
-        <a href="https://drive.google.com/file/d/1-vfExpfeo6OwdtJXC-hwROLiq5AOJJMp/view?usp=sharing" title="CV"><i class="ai ai-cv"></i></a>
-      </div>
-
-      <div class="contact">Vancouver, Canada · <a href="mailto:sepidh@sfu.ca">sepidh@sfu.ca</a></div>
-    </aside>
-
-    <!-- Main Content -->
-    <section class="main">
-      <!-- About -->
-      <section class="card" id="about">
-        <h2 class="section-title"><span class="dot"></span>About</h2>
-        <p>Currently, I am a Machine Learning Researcher at <a href="https://www.borealisai.com/">RBC Borealis AI</a>.
-        I received my Ph.D. from <a href="https://www.sfu.ca/">Simon Fraser University (SFU)</a>, where I was advised by
-        <a href="https://www.cs.sfu.ca/~furukawa/">Prof. Yasutaka Furukawa</a> (2020–2025). Prior to SFU, I completed my M.Sc. at
-        <a href="http://ispl.snu.ac.kr/xe/">Seoul National University (SNU)</a> under the supervision of Prof. Cho Nam Ik (2019),
-        and my B.Sc. in Electrical and Computer Engineering at SNU.</p>
-        <p>My research interests include computer vision, geometric deep learning, anomaly detection, and time series forecasting.</p>
-      </section>
-
-      <!-- Publications (venue line before authors) -->
-      <!-- News -->
-      <section class="card" id="news">
-        <h2 class="section-title"><span class="dot"></span>News</h2>
-        <ul class="news-list">
-             <li class="news-item"><span class="news-date"> Jun 2025</span> Scalable Temporal Domain Generalization via Prompting </em>accepted to ICML 2025, Workshop of Test-Time Adaptation.</li>
-
-
-          <li class="news-item"><span class="news-date"> January 2025</span> RADAR: Robust Adaptive Decoding through Attention Regularization</em> accepted to ICLR 2025. <a href="https://arxiv.org/abs/2503.10571">Paper</a> · <a href="https://github.com/BorealisAI/radar-decoding">Code</a></li>
-          <li class="news-item"><span class="news-date">Dec 2023</span> Joined RBC Borealis as Machine Learning Researcher.</li>
-          <li class="news-item"><span class="news-date"> September 2023</span> <em>PuzzleFusion</em> accepted to NeurIPS 2023 <span class="news-badge">Spotlight</span>. <a href="https://sepidsh.github.io/puzzlefusion/">Project</a> · <a href="https://arxiv.org/pdf/2211.13785.pdf">Paper</a></li>
-        </ul>
-      </section>
-
-/* ===== Publications ===== */
-.pub{padding:16px; border:1px solid var(--border); border-radius:var(--radius-2); background:#fff}
-.pub + .pub{margin-top:12px}
-.pub-title{font-weight:600; font-size:16px; color:var(--evergreen)}
-.venue{margin:6px 0 4px; font-size:13px; color:var(--muted)}
-.authors{font-size:14px; color:#2f2d2a}
-.me{color:inherit; text-decoration:underline; text-decoration-thickness:2px; text-underline-offset:3px}
-.links-row{margin-top:6px; font-size:14px}
-
-/* ===== Experience / Teaching ===== */
-.grid-2{display:grid; grid-template-columns:1fr 1fr; gap:16px}
-.exp-item{
-  padding:12px 14px; border-radius:var(--radius-2);
-  border:1px solid var(--border); background:#fff
-}
-.exp-top{display:flex; justify-content:space-between; align-items:center; gap:8px}
-.exp-title{font-weight:600; color:var(--evergreen)}
-.time{font-size:12px; color:var(--muted)}
-.company{font-size:14px; color:#3c3a36; margin-top:4px}
-
-footer{max-width:1200px; margin:24px auto 36px; padding:0 16px; color:#6d6a63; font-size:12px; text-align:center}
-
-/* ===== Responsive ===== */
-@media (max-width: 900px){
-  .wrapper{grid-template-columns:1fr; gap:18px}
-  .sidebar{position:static}
-}
-@media (max-width: 640px){
-  .topnav-inner{justify-content:flex-start}
-  .tabs a{font-size:13px; padding:6px 10px}
-  .avatar{width:72px; height:72px}
-  .card{padding:18px}
-  .grid-2{grid-template-columns:1fr}
-  h1{font-size:20px}
-}
-</style>
-
-
-</head>
-<body>
-  <header class="topnav">
-    <div class="topnav-inner">
-      <nav class="tabs" aria-label="Primary">
-        <a href="#about">About</a>
         <a href="#publications">Publications</a>
         <a href="#experience">Experience</a>
         <a href="#teaching">Teaching</a>
@@ -363,6 +255,7 @@ footer{max-width:1200px; margin:24px auto 36px; padding:0 16px; color:#6d6a63; f
 <footer>
   <small>© <script>document.write(new Date().getFullYear())</script> Sepidehsadat Hosseini • Designed with ❤️ and CSS • Theme accents: <span style="color:var(--brand)">teal</span> & <span style="color:var(--brand-2)">indigo</span></small>
 </footer>
+
 
 
 
