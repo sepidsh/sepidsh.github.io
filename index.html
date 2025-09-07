@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Sepidehsadat Hosseini — ML Researcher</title>
   <meta name="description" content="Sepidehsadat Hosseini — Machine Learning Researcher" />
 
@@ -14,84 +14,97 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
 
-  <!-- Base CSS Reset + Minimal Utilities -->
   <style>
     :root{
-      --bg:#0b0e14;
-      --panel:#121826;
-      --text:#e8eef8;
-      --muted:#a9b4c6;
-      --brand:#2ec4b6;
-      --brand-2:#82aaff;
-      --chip:#1e2536;
-      --link:#8bd3dd;
-      --border:#243148;
+      --bg:#0b0e14;            /* page background */
+      --panel:#121826;         /* cards/sections */
+      --text:#e8eef8;          /* primary text */
+      --muted:#a9b4c6;         /* secondary text */
+      --brand:#2ecc71;         /* GREEN */
+      --brand-2:#ff8a00;       /* ORANGE */
+      --chip:#1e2536;          /* tag bg */
+      --link:#82ffd3;          /* link tint */
+      --border:#243148;        /* borders */
       --shadow: 0 10px 30px rgba(0,0,0,.35);
       --radius-2: 14px;
       --radius-3: 22px;
     }
+    @media (prefers-color-scheme: light){
+      :root{ --bg:#f9fafb; --panel:#ffffff; --text:#0f172a; --muted:#475569; --chip:#eef2ff; --border:#e2e8f0; --link:#0ea5e9; }
+      body{ color-scheme: light; }
+    }
+
     *{box-sizing:border-box}
     html,body{height:100%}
+    html{scroll-behavior:smooth}
     body{
       margin:0; font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
       color:var(--text); background:var(--bg); line-height:1.6;
     }
     a{color:var(--link); text-decoration:none}
-    a:hover{opacity:.9; text-decoration:underline}
+    a:hover{text-decoration:underline}
 
     /* Top nav */
-    .topnav{position:sticky; top:0; z-index:100; backdrop-filter:saturate(140%) blur(8px); background:rgba(11,14,20,.95); border-bottom:1px solid var(--border);}
-    .topnav-inner{max-width:1200px; margin:0 auto; padding:12px 24px; display:flex; align-items:center; justify-content:flex-end; gap:10px}
-    .tabs{display:flex; gap:8px}
-    .tabs a{padding:8px 14px; border:1px solid var(--border); border-radius:12px; background:rgba(255,255,255,.04); font-size:14px}
-    html{scroll-behavior:smooth}
+    .topnav{position:sticky; top:0; z-index:100; backdrop-filter:saturate(140%) blur(8px); background:rgba(11,14,20,.92); border-bottom:1px solid var(--border)}
+    .topnav-inner{max-width:1200px; margin:0 auto; padding:12px 16px; display:flex; align-items:center; justify-content:flex-end; gap:10px}
+    .tabs{display:flex; gap:8px; overflow:auto; -webkit-overflow-scrolling:touch; scrollbar-width:none}
+    .tabs::-webkit-scrollbar{display:none}
+    .tabs a{white-space:nowrap; padding:8px 14px; border:1px solid var(--border); border-radius:12px; background:rgba(255,255,255,.06); font-size:14px}
 
-    .wrapper{display:grid; grid-template-columns: 330px 1fr; gap:28px; max-width:1200px; margin:40px auto 80px; padding:0 24px}
-    .sidebar{position:sticky; top:84px; height:fit-content; background:var(--panel); border:1px solid var(--border); border-radius:var(--radius-3); box-shadow:var(--shadow); padding:28px}
-    .profile{display:flex; align-items:center; gap:18px}
-    .avatar{border-radius:50%; width:96px; height:96px; object-fit:cover; border:3px solid rgba(255,255,255,.06)}
+    .wrapper{display:grid; grid-template-columns: 320px 1fr; gap:28px; max-width:1200px; margin:32px auto 64px; padding:0 16px}
+    .sidebar{position:sticky; top:76px; height:fit-content; background:var(--panel); border:1px solid var(--border); border-radius:var(--radius-3); box-shadow:var(--shadow); padding:24px}
+    .profile{display:flex; align-items:center; gap:16px}
+    .avatar{border-radius:50%; width:92px; height:92px; object-fit:cover; border:3px solid rgba(255,255,255,.06)}
     h1{font-size:24px; margin:0}
     .role{margin-top:6px; color:var(--muted)}
     .chips{margin-top:14px; display:flex; flex-wrap:wrap; gap:8px}
     .chip{background:var(--chip); color:#dbe7ff; border:1px solid var(--border); padding:6px 10px; font-size:12px; border-radius:999px}
-    .links{margin-top:16px; display:flex; gap:14px; font-size:22px}
+    .links{margin-top:16px; display:flex; gap:12px; font-size:22px; flex-wrap:wrap}
     .links a{display:inline-flex; width:36px; height:36px; align-items:center; justify-content:center; border-radius:10px; background:rgba(255,255,255,.04); border:1px solid var(--border)}
     .contact{margin-top:16px; font-size:14px}
 
-    .main{display:flex; flex-direction:column; gap:26px}
-    .card{background:var(--panel); border:1px solid var(--border); border-radius:var(--radius-3); box-shadow:var(--shadow); padding:28px; scroll-margin-top:84px}
+    .main{display:flex; flex-direction:column; gap:22px}
+    .card{background:var(--panel); border:1px solid var(--border); border-radius:var(--radius-3); box-shadow:var(--shadow); padding:24px; scroll-margin-top:84px}
     .section-title{display:flex; align-items:center; gap:10px; font-size:18px; margin:0 0 8px}
-    .section-title .dot{width:9px; height:9px; border-radius:50%; background:var(--brand)}
+    .section-title .dot{width:9px; height:9px; border-radius:50%; background:linear-gradient(90deg,var(--brand),var(--brand-2))}
     p{margin:10px 0}
 
-    .pub{padding:18px; border:1px solid var(--border); border-radius:var(--radius-2); background:rgba(255,255,255,.02)}
+    .pub{padding:16px; border:1px solid var(--border); border-radius:var(--radius-2); background:rgba(255,255,255,.02)}
     .pub + .pub{margin-top:12px}
     .pub-title{font-weight:600; font-size:16px}
     .authors{font-size:14px}
-    .me{color:#fff; text-decoration:underline; text-decoration-thickness:2px; text-underline-offset:4px; text-decoration-color: var(--brand-2);}
-    .badge{margin-left:8px; font-size:12px; background:rgba(130,170,255,.12); border:1px solid #334a80; border-radius:999px; padding:4px 8px}
+    .me{color:inherit; text-decoration:underline; text-decoration-thickness:2px; text-underline-offset:4px; text-decoration-color: var(--brand-2)}
+    .badge{margin-left:8px; font-size:12px; background:rgba(255,138,0,.15); border:1px solid rgba(255,138,0,.35); border-radius:999px; padding:4px 8px}
 
-    .grid-2{display:grid; grid-template-columns:1fr 1fr; gap:18px}
-    .exp-item{padding:14px 16px; border-radius:var(--radius-2); border:1px solid var(--border); background:rgba(255,255,255,.02)}
+    .grid-2{display:grid; grid-template-columns:1fr 1fr; gap:16px}
+    .exp-item{padding:12px 14px; border-radius:var(--radius-2); border:1px solid var(--border); background:rgba(255,255,255,.02)}
     .exp-top{display:flex; justify-content:space-between; align-items:center; gap:8px}
     .exp-title{font-weight:600}
     .time{font-size:12px; color:var(--muted)}
     .company{font-size:14px; color:var(--muted); margin-top:4px}
 
-    footer{max-width:1200px; margin:32px auto 40px; padding:0 24px; color:var(--muted); font-size:12px; text-align:center}
+    footer{max-width:1200px; margin:24px auto 36px; padding:0 16px; color:var(--muted); font-size:12px; text-align:center}
 
-    @media (max-width: 980px){
-      .wrapper{grid-template-columns: 1fr}
+    /* Mobile Friendly */
+    @media (max-width: 900px){
+      .wrapper{grid-template-columns:1fr; gap:18px}
       .sidebar{position:static}
+    }
+    @media (max-width: 640px){
+      .topnav-inner{justify-content:flex-start}
+      .tabs a{font-size:13px; padding:6px 10px}
+      .avatar{width:72px; height:72px}
+      .card{padding:18px}
       .grid-2{grid-template-columns:1fr}
-      .topnav-inner{justify-content:center}
+      .links{gap:10px}
+      h1{font-size:20px}
     }
   </style>
 </head>
 <body>
   <header class="topnav">
     <div class="topnav-inner">
-      <nav class="tabs">
+      <nav class="tabs" aria-label="Primary">
         <a href="#about">About</a>
         <a href="#publications">Publications</a>
         <a href="#experience">Experience</a>
@@ -197,3 +210,4 @@
 <footer>
   <small>© <script>document.write(new Date().getFullYear())</script> Sepidehsadat Hosseini • Designed with ❤️ and CSS • Theme accents: <span style="color:var(--brand)">teal</span> & <span style="color:var(--brand-2)">indigo</span></small>
 </footer>
+
