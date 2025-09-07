@@ -19,7 +19,6 @@
     :root{
       --bg:#0b0e14;
       --panel:#121826;
-      --panel-2:#0f1422;
       --text:#e8eef8;
       --muted:#a9b4c6;
       --brand:#2ec4b6;
@@ -48,7 +47,7 @@
     html{scroll-behavior:smooth}
 
     .wrapper{display:grid; grid-template-columns: 330px 1fr; gap:28px; max-width:1200px; margin:40px auto 80px; padding:0 24px}
-    .sidebar{position:sticky; top:84px; height:fit-content; background:linear-gradient(180deg, var(--panel-2), #0d1322); border:1px solid var(--border); border-radius:var(--radius-3); box-shadow:var(--shadow); padding:28px}
+    .sidebar{position:sticky; top:84px; height:fit-content; background:var(--panel); border:1px solid var(--border); border-radius:var(--radius-3); box-shadow:var(--shadow); padding:28px}
     .profile{display:flex; align-items:center; gap:18px}
     .avatar{border-radius:50%; width:96px; height:96px; object-fit:cover; border:3px solid rgba(255,255,255,.06)}
     h1{font-size:24px; margin:0}
@@ -96,6 +95,7 @@
         <a href="#about">About</a>
         <a href="#publications">Publications</a>
         <a href="#experience">Experience</a>
+        <a href="#teaching">Teaching</a>
       </nav>
     </div>
   </header>
@@ -147,52 +147,53 @@
       <section class="card" id="publications">
         <h2 class="section-title"><span class="dot"></span>Selected Publications</h2>
 
-        <div class="pub">
-          <div class="pub-title">RADAR: Robust Adaptive Decoding through Attention Regularization
-            <span class="badge">ICLR 2025</span>
-          </div>
-          <div class="authors">Yongchang Hao, Mengyao Zhai, Hossein Hajimirsadeghi, <span class="me">Sepidehsadat Hosseini</span>, Frederick Tung</div>
-          <div class="venue">Links: <a href="https://arxiv.org/abs/2503.10571">Paper</a> · <a href="https://github.com/BorealisAI/radar-decoding">Code</a></div>
-        </div>
+        <div class="pub"><div class="pub-title">RADAR: Robust Adaptive Decoding through Attention Regularization <span class="badge">ICLR 2025</span></div><div class="authors">Yongchang Hao, Mengyao Zhai, Hossein Hajimirsadeghi, <span class="me">Sepidehsadat Hosseini</span>, Frederick Tung</div><div class="venue">Links: <a href="https://arxiv.org/abs/2503.10571">Paper</a> · <a href="https://github.com/BorealisAI/radar-decoding">Code</a></div></div>
 
-        <div class="pub">
-          <div class="pub-title">PuzzleFusion: Unleashing the Power of Diffusion Models for Spatial Puzzle Solving
-            <span class="badge">NeurIPS 2023 · Spotlight</span>
-          </div>
-          <div class="authors"><span class="me">Sepidehsadat Hosseini</span>, Mohammad Amin Shabani, Saghar Irandoust, Yasutaka Furukawa</div>
-          <div class="venue">Links: <a href="https://sepidsh.github.io/puzzlefusion/">Project</a> · <a href="https://arxiv.org/pdf/2211.13785.pdf">Paper</a> · <a href="https://github.com/sepidsh/PuzzleFussion">Code</a></div>
-        </div>
+        <div class="pub"><div class="pub-title">PuzzleFusion: Unleashing the Power of Diffusion Models for Spatial Puzzle Solving <span class="badge">NeurIPS 2023 · Spotlight</span></div><div class="authors"><span class="me">Sepidehsadat Hosseini</span>, Mohammad Amin Shabani, Saghar Irandoust, Yasutaka Furukawa</div><div class="venue">Links: <a href="https://sepidsh.github.io/puzzlefusion/">Project</a> · <a href="https://arxiv.org/pdf/2211.13785.pdf">Paper</a> · <a href="https://github.com/sepidsh/PuzzleFussion">Code</a></div></div>
 
-        <!-- More pubs unchanged -->
+        <div class="pub"><div class="pub-title">Floorplan Restoration by Structure Hallucinating Transformer Cascades <span class="badge">BMVC 2023</span></div><div class="authors"><span class="me">Sepidehsadat Hosseini</span>, Yasutaka Furukawa</div><div class="venue">Links: <a href="https://sepidsh.github.io/floorplan_restore/">Project</a> · <a href="https://arxiv.org/pdf/2206.00645.pdf">Paper</a></div></div>
+
+        <div class="pub"><div class="pub-title">HouseDiffusion: Vector Floorplan Generation via a Diffusion Model with Discrete and Continuous Denoising <span class="badge">CVPR 2023</span></div><div class="authors">Mohammad Amin Shabani, <span class="me">Sepidehsadat Hosseini</span>, Yasutaka Furukawa</div><div class="venue">Links: <a href="https://aminshabani.github.io/housediffusion/">Project</a> · <a href="https://arxiv.org/pdf/2211.13287.pdf">Paper</a> · <a href="https://github.com/aminshabani/house_diffusion">Code</a></div></div>
+
+        <div class="pub"><div class="pub-title">House-GAN++: Generative Adversarial Layout Refinement Network <span class="badge">CVPR 2021</span></div><div class="authors">Nelson Nauata, <span class="me">Sepidehsadat Hosseini</span>, Kai-Hung Chang, Hang Chu, Chin-Yi Cheng, Yasutaka Furukawa</div><div class="venue">Links: <a href="https://ennauata.github.io/houseganpp/page.html">Project</a> · <a href="https://arxiv.org/abs/2103.02574">Paper</a></div></div>
+
+        <div class="pub"><div class="pub-title">GF-CapsNet: Using Gabor Jet and Capsule Networks for Facial Age, Gender, and Expression Recognition <span class="badge">FG 2019</span></div><div class="authors"><span class="me">Sepidehsadat Hosseini</span>, Nam Ik Cho</div><div class="venue">Links: <a href="https://ieeexplore.ieee.org/document/8756552">Paper</a></div></div>
+
+        <div class="pub"><div class="pub-title">Deep Multi-Dataset Multi-Domain Multi-Task Frameworks for Facial Expression Recognition, Age and Gender Estimation <span class="badge">Thesis 2019</span></div><div class="authors"><span class="me">Sepidehsadat Hosseini</span>, Nam Ik Cho</div><div class="venue">Links: <a href="https://arxiv.org/abs/1907.03402">Paper</a></div></div>
+
+        <div class="pub"><div class="pub-title">Multiple Face Tracking in the Wild Using Color Histogram Features <span class="badge">ISSPIT 2017</span></div><div class="authors">Hyuk Jin Kwon, Seok Hee Lee, <span class="me">Sepidehsadat Hosseini</span>, Jaewon Moon, Hyung Il Koo, Nam Ik Cho</div><div class="venue">Links: <a href="https://ieeexplore.ieee.org/document/8388318">Paper</a></div></div>
       </section>
 
       <!-- Experience -->
       <section class="card" id="experience">
         <h2 class="section-title"><span class="dot"></span>Work Experience</h2>
         <div class="grid-2">
-          <div class="exp-item">
-            <div class="exp-top">
-              <div class="exp-title">RBC Borealis</div>
-              <div class="time">Dec 2023 – Present</div>
-            </div>
-            <div class="company">Machine Learning Researcher</div>
-          </div>
+          <div class="exp-item"><div class="exp-top"><div class="exp-title">RBC Borealis</div><div class="time">Dec 2023 – Present</div></div><div class="company">Machine Learning Researcher</div></div>
 
-          <div class="exp-item">
-            <div class="exp-top">
-              <div class="exp-title">Borealis AI</div>
-              <div class="time">Summer 2023</div>
-            </div>
-            <div class="company">Machine Learning Research Intern</div>
-          </div>
+          <div class="exp-item"><div class="exp-top"><div class="exp-title">Borealis AI</div><div class="time">Summer 2023</div></div><div class="company">Machine Learning Research Intern</div></div>
+
+          <div class="exp-item"><div class="exp-top"><div class="exp-title">LG Electronics, Intelligent Systems Research Center</div><div class="time">Summer 2017</div></div><div class="company">Research Intern</div></div>
+
+          <div class="exp-item"><div class="exp-top"><div class="exp-title">Samsung Techwin, Software Development Center</div><div class="time">Summer 2015</div></div><div class="company">Software Engineer Intern</div></div>
         </div>
       </section>
 
-    </section>
-  </main>
+<!-- Teaching -->
+<section class="card" id="teaching">
+  <h2 class="section-title"><span class="dot"></span>Teaching Experience</h2>
+  <div class="grid-2">
+    <div class="exp-item"><div class="exp-top"><div class="exp-title">CMPT 412 Computational Vision</div><div class="time">Spring 2023</div></div><div class="company">Teaching Assistant</div></div>
 
-  <footer>
-    <small>© <script>document.write(new Date().getFullYear())</script> Sepidehsadat Hosseini • Designed with ❤️ and CSS • Theme accents: <span style="color:var(--brand)">teal</span> & <span style="color:var(--brand-2)">indigo</span></small>
-  </footer>
-</body>
-</html>
+    <div class="exp-item"><div class="exp-top"><div class="exp-title">CMPT 477 Intro to Formal Verification</div><div class="time">Fall 2022</div></div><div class="company">Teaching Assistant</div></div>
+
+    <div class="exp-item"><div class="exp-top"><div class="exp-title">CMPT 225 Data Structures and Programming</div><div class="time">Summer 2022</div></div><div class="company">Teaching Assistant</div></div>
+
+    <div class="exp-item"><div class="exp-top"><div class="exp-title">CMPT 125 Introduction to Computing Science and Programming II</div><div class="time">Spring 2022, Fall 2021, Summer 2021, Fall 2020, Summer 2020</div></div><div class="company">Teaching Assistant</div></div>
+
+    <div class="exp-item"><div class="exp-top"><div class="exp-title">CMPT 419 Machine Learning</div><div class="time">Spring 2021</div></div><div class="company">Teaching Assistant</div></div>
+  </div>
+</section>
+
+<footer>
+  <small>© <script>document.write(new Date().getFullYear())</script> Sepidehsadat Hosseini • Designed with ❤️ and CSS • Theme accents: <span style="color:var(--brand)">teal</span> & <span style="color:var(--brand-2)">indigo</span></small>
+</footer>
