@@ -99,6 +99,15 @@
       .grid-2{grid-template-columns:1fr}
       h1{font-size:20px}
     }
+
+        /* Call-to-action: Contact button (desktop: FAB, mobile: sticky bottom bar) */
+    .cta-fab{
+      position:fixed; right:22px; bottom:22px; z-index:2000; border:none; cursor:pointer;
+      background:linear-gradient(135deg, var(--sky), var(--tangerine)); color:white; font-weight:700;
+      padding:14px 18px; border-radius:999px; box-shadow:0 14px 30px rgba(0,0,0,.18);
+      display:flex; align-items:center; gap:10px; font-size:15px;
+      transition:transform .15s ease, box-shadow .2s ease;
+    }
   
     /* News styles */
     .news-list{list-style:none;margin:0;padding:0}
@@ -231,6 +240,7 @@
           <div class="links-row">Links: <a href="https://ieeexplore.ieee.org/document/8756552">Paper</a></div>
         </div>
 
+        
         <div class="pub">
           <div class="pub-title">Deep Multi-Dataset Multi-Domain Multi-Task Frameworks for Facial Expression Recognition, Age and Gender Estimation</div>
           <div class="venue">Master’s Thesis Summary, 2019</div>
@@ -274,6 +284,7 @@
     <div class="exp-item"><div class="exp-top"><div class="exp-title">CMPT 419 Machine Learning</div><div class="time">Spring 2021</div></div><div class="company">Teaching Assistant</div></div>
   </div>
 </section>
+
 
 
 
