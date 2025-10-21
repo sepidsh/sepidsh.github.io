@@ -17,16 +17,16 @@
 
   <style>
     :root{
-      /* Base tokens (overridden per theme as needed) */
+      /* Base tokens */
       --radius-2:12px;
       --radius-3:18px;
       --shadow:0 10px 26px rgba(0,0,0,.15);
 
-      /* Buttons / accents that some themes reuse */
-      --sky:#4F46E5;        /* for CTA gradient fallback */
+      /* Accent (kept for potential FAB) */
+      --sky:#4F46E5;        
       --tangerine:#F59E0B;
 
-      /* Default (will be overridden by [data-theme]) */
+      /* Defaults (overridden by themes) */
       --bg:#f6f7f8;
       --panel:#ffffff;
       --back:#ffffff;
@@ -36,13 +36,13 @@
       --border:#e5e7eb;
       --gold:#f59e0b;
       --chip-text:#0f172a;
-      --dot-from:#fbbf24;
-      --dot-to:#f59e0b;
+      --dot-from:#93c5fd;
+      --dot-to:#2563eb;
     }
 
     /* ========================= THEMES ========================= */
 
-    /* Light (neutral) */
+    /* Light */
     html[data-theme="light"]{
       color-scheme: light;
       --bg:#f6f7f8;
@@ -90,7 +90,7 @@
       --dot-to:#1d4ed8;
     }
 
-    /* Green (your “jungle” vibe, default) */
+    /* Green (jungle vibe) */
     html[data-theme="green"]{
       --bg:#E9F4EC;      /* mist */
       --panel:#F6F5F0;   /* bark */
@@ -135,12 +135,12 @@
     .tabs::-webkit-scrollbar{display:none}
     .tabs a{white-space:nowrap; padding:8px 14px; border:1px solid var(--border); border-radius:10px; background:var(--back); font-size:14px; color:var(--text); transition:all .18s ease}
 
-    /* Theme control */
-    .theme-switcher{display:flex; align-items:center; gap:8px}
-    .theme-select{
-      padding:8px 12px; border:1px solid var(--border); background:var(--back); color:var(--text);
-      border-radius:10px; font-size:14px;
-    }
+    /* Cute dots control */
+    .theme-dots{display:flex; align-items:center; gap:10px}
+    .theme-dot{width:14px; height:14px; border-radius:50%; cursor:pointer; border:2px solid rgba(255,255,255,.9); box-shadow:0 2px 6px rgba(0,0,0,.15); transition:transform .15s ease, box-shadow .2s ease}
+    .theme-dot:hover{transform:scale(1.15)}
+    .theme-dot:focus-visible{outline:2px solid var(--link); outline-offset:2px}
+    .theme-dot.active{box-shadow:0 0 0 3px color-mix(in srgb, var(--link) 50%, transparent)}
 
     /* Layout */
     .wrapper{display:grid; grid-template-columns:320px 1fr; gap:28px; max-width:1200px; margin:28px auto 64px; padding:0 16px}
@@ -191,16 +191,6 @@
       h1{font-size:20px}
     }
 
-    /* CTA (kept for future use) */
-    .cta-fab{
-      position:fixed; right:22px; bottom:22px; z-index:2000; border:none; cursor:pointer;
-      background:linear-gradient(135deg, var(--sky), var(--tangerine)); color:white; font-weight:700;
-      padding:14px 18px; border-radius:999px; box-shadow:0 14px 30px rgba(0,0,0,.18);
-      display:flex; align-items:center; gap:10px; font-size:15px;
-      transition:transform .15s ease, box-shadow .2s ease;
-    }
-    .cta-fab:hover{transform:translateY(-2px); box-shadow:0 20px 34px rgba(0,0,0,.22)}
-
     /* News */
     .news-list{list-style:none;margin:0;padding:0}
     .news-item{padding:10px 12px;border:1px solid var(--border);background:var(--back);border-radius:var(--radius-2);margin-top:10px}
@@ -219,15 +209,13 @@
         <a href="#teaching">Teaching</a>
       </nav>
 
-      <div class="theme-switcher">
-        <label for="theme-select" class="visually-hidden">Theme</label>
-        <select id="theme-select" class="theme-select" aria-label="Select theme">
-          <option value="green">Green</option>
-          <option value="light">Light</option>
-          <option value="dark">Dark</option>
-          <option value="blue">Blue</option>
-          <option value="orange">Orange</option>
-        </select>
+      <!-- Cute theme dots -->
+      <div class="theme-dots" role="group" aria-label="Theme">
+        <button class="theme-dot" data-theme="light" style="background:#D5FFFF" title="Light" aria-label="Light"></button>
+        <button class="theme-dot" data-theme="dark" style="background:#000080" title="Dark" aria-label="Dark"></button>
+        <button class="theme-dot" data-theme="blue" style="background:#89CFF0" title="Blue" aria-label="Blue"></button>
+        <button class="theme-dot" data-theme="green" style="background:#355E3B" title="Green" aria-label="Green"></button>
+        <button class="theme-dot" data-theme="orange" style="background:#FFAC1C" title="Orange" aria-label="Orange"></button>
       </div>
     </div>
   </header>
@@ -387,49 +375,43 @@
   </footer>
 
   <script>
-    // Accessibility helper for hidden label
-    (function addVisuallyHiddenStyle(){
-      const css = document.createElement('style');
-      css.textContent = '.visually-hidden{position:absolute!important;clip:rect(1px,1px,1px,1px);padding:0!important;border:0!important;height:1px!important;width:1px!important;overflow:hidden!important;white-space:nowrap!important;}';
-      document.head.appendChild(css);
-    })();
-
     const THEME_KEY = 'site-theme';
-    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const selectEl = document.getElementById('theme-select');
+    const dots = document.querySelectorAll('.theme-dot');
+
+    function saveTheme(v){ try{ localStorage.setItem(THEME_KEY, v); }catch(e){} }
+    function loadTheme(){ try{ return localStorage.getItem(THEME_KEY); }catch(e){ return null; } }
+
+    function setActiveDot(theme){
+      dots.forEach(d=>d.classList.toggle('active', d.dataset.theme === theme));
+    }
 
     function applyTheme(theme){
       document.documentElement.setAttribute('data-theme', theme);
-      try{ localStorage.setItem(THEME_KEY, theme); }catch(e){}
-      // Keep the <select> in sync if changed programmatically
-      if(selectEl && selectEl.value !== theme){
-        selectEl.value = theme;
-      }
+      saveTheme(theme);
+      setActiveDot(theme);
     }
 
-    // Initialize theme on first load
+    // Init
     (function initTheme(){
-      let saved = null;
-      try { saved = localStorage.getItem(THEME_KEY); } catch(e){}
-      // default to green unless user prefers dark and hasn't chosen yet
+      const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const saved = loadTheme();
       const initial = saved || (prefersDark ? 'dark' : document.documentElement.getAttribute('data-theme') || 'green');
       applyTheme(initial);
     })();
 
-    // Listen to OS theme changes only if user hasn't explicitly chosen
+    // Listen to dot clicks
+    dots.forEach(dot=>{
+      dot.addEventListener('click', ()=> applyTheme(dot.dataset.theme));
+    });
+
+    // Optional: follow OS changes only if user hasn't chosen explicitly
     const mq = window.matchMedia('(prefers-color-scheme: dark)');
     mq.addEventListener?.('change', e => {
-      let saved = null;
-      try { saved = localStorage.getItem(THEME_KEY); } catch(err){}
+      const saved = loadTheme();
       if(!saved){ applyTheme(e.matches ? 'dark' : 'light'); }
     });
 
-    // Hook up the select
-    selectEl.addEventListener('change', (e) => {
-      applyTheme(e.target.value);
-    });
-
-    // Set current year
+    // Year
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 </body>
