@@ -35,7 +35,7 @@
   --text:#12281C;              /* deep shadowed jungle text */
   --muted:var(--moss);         /* secondary leafy green */
   --link:var(--sunlight);      /* warm highlight accent */
-  --border:color-mix(in srgb, var(--fern) 35%, backfff 65%);
+  --border:color-mix(in srgb, var(--fern) 35%, #ffffff 65%);
   --gold:var(--sunlight);      /* keeps news badge warm */
   --radius-2:12px;
   --radius-3:18px;
@@ -86,7 +86,7 @@
 
     /* Experience/Teaching grid */
     .grid-2{display:grid; grid-template-columns:1fr 1fr; gap:16px}
-    .exp-item{padding:12px 14px; border-radius:var(--radius-2); border:1px solid var(--border); background:back}
+    .exp-item{padding:12px 14px; border-radius:var(--radius-2); border:1px solid var(--border); background:var(--back)}
     .exp-top{display:flex; justify-content:space-between; align-items:center; gap:8px}
     .exp-title{font-weight:600}
     .time{font-size:12px; color:#6b7280}
@@ -119,10 +119,10 @@
   
     /* News styles */
     .news-list{list-style:none;margin:0;padding:0}
-    .news-item{padding:10px 12px;border:1px solid var(--border);background:back;border-radius:var(--radius-2);margin-top:10px}
+    .news-item{padding:10px 12px;border:1px solid var(--border);background:var(--back);border-radius:var(--radius-2);margin-top:10px}
     .news-item:first-child{margin-top:0}
     .news-date{display:inline-block;font-weight:600;color:var(--evergreen);margin-right:8px}
-    .news-badge{display:inline-block;background:color-mix(in srgb, var(--gold) 22%, back 78%);border:1px solid var(--gold);padding:2px 6px;border-radius:999px;font-size:12px;margin-left:6px;color:#5a4520}
+    .news-badge{display:inline-block;background:color-mix(in srgb, var(--gold) 22%, var(--back) 78%);border:1px solid var(--gold);padding:2px 6px;border-radius:999px;font-size:12px;margin-left:6px;color:#5a4520}
   </style>
 </head>
 <body>
@@ -295,6 +295,7 @@
     <div class="exp-item"><div class="exp-top"><div class="exp-title">CMPT 419 Machine Learning</div><div class="time">Spring 2021</div></div><div class="company">Teaching Assistant</div></div>
   </div>
 </section>
+
 
 
 
