@@ -442,7 +442,7 @@
     });
 
     // Optional: follow OS changes only if user hasn't chosen explicitly
-    const mq = window.matchMedia('(prefers-color-scheme: dark)');
+    const mq = window.matchMedia('(prefers-color-scheme: blue)');
     mq.addEventListener?.('change', e => {
       const saved = loadTheme();
       if(!saved){ applyTheme(e.matches ? 'dark' : 'light'); }
@@ -453,4 +453,5 @@
   </script>
 </body>
 </html>
+
 
