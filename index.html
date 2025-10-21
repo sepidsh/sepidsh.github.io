@@ -432,7 +432,7 @@
     (function initTheme(){
       const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
       const saved = loadTheme();
-      const initial = saved  || 'green';
+      const initial = saved  || 'blue';
       applyTheme(initial);
     })();
 
@@ -443,6 +443,9 @@
 
     // Optional: follow OS changes only if user hasn't chosen explicitly
     const mq = window.matchMedia('(prefers-color-scheme: blue)');
+     mq.addEventListener?.('change', e => {
+      const saved = loadTheme();
+      if(!saved){ applyTheme(e.matches ? 'dark' : 'light'); }
 
 
     // Year
@@ -450,6 +453,7 @@
   </script>
 </body>
 </html>
+
 
 
 
