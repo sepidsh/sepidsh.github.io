@@ -29,6 +29,8 @@
   --shadow:0 10px 26px rgba(0,0,0,.15);
   --gray:#6b7280;
   --fresco:#284438;
+  --slate:#3b3a37;
+  --paleb:#f1f5f9
   
 
   --bg:var(--mist);            /* misty background */
@@ -54,14 +56,14 @@
     .topnav-inner{max-width:1200px; margin:0 auto; padding:12px 16px; display:flex; align-items:center; justify-content:flex-end; gap:10px}
     .tabs{display:flex; gap:8px; overflow:auto; -webkit-overflow-scrolling:touch; scrollbar-width:none}
     .tabs::-webkit-scrollbar{display:none}
-    .tabs a{white-space:nowrap; padding:8px 14px; border:1px solid var(--border); border-radius:10px; background:back; font-size:14px; color:#3b3a37; transition:all .18s ease}
+    .tabs a{white-space:nowrap; padding:8px 14px; border:1px solid var(--border); border-radius:10px; background:back; font-size:14px; color:var(--slate); transition:all .18s ease}
     .contact{margin-top:16px; font-size:14px; color:var(--fresco)}
 
     /* Layout */
     .wrapper{display:grid; grid-template-columns:320px 1fr; gap:28px; max-width:1200px; margin:28px auto 64px; padding:0 16px}
     .sidebar{position:sticky; top:76px; height:fit-content; background:var(--panel); border:1px solid var(--border); border-radius:var(--radius-3); box-shadow:var(--shadow); padding:22px}
     .profile{display:flex; align-items:center; gap:14px}
-    .avatar{border-radius:50%; width:92px; height:92px; object-fit:cover; border:2px solid #f1f5f9}
+    .avatar{border-radius:50%; width:92px; height:92px; object-fit:cover; border:2px solid var(--paleb)}
     h1{font-size:24px; margin:0}
     .role{margin-top:6px; color:var(--muted)}
     .chips{margin-top:14px; display:flex; flex-wrap:wrap; gap:8px}
@@ -296,6 +298,7 @@
     <div class="exp-item"><div class="exp-top"><div class="exp-title">CMPT 419 Machine Learning</div><div class="time">Spring 2021</div></div><div class="company">Teaching Assistant</div></div>
   </div>
 </section>
+
 
 
 
