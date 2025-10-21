@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="green">
 <head>
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -8,45 +8,117 @@
   <meta name="description" content="Sepidehsadat Hosseini" />
   <link rel="shortcut icon" href="favicon.ico" />
 
-  <!-- Google Font: Roboto (original theme) -->
+  <!-- Google Font: Roboto -->
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap" rel="stylesheet" />
 
-  <!-- Icons (original stack) -->
+  <!-- Icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
 
-  <!-- Neutral, bootstrap-like palette to match original theme -->
   <style>
-:root{
-  /* "Shitler Jungle" palette – immersive deep rainforest greens with warm sunlight hints */
-  --canopy:#0C3B2E;          /* dark, saturated jungle green */
-  --fern:#1B5E37;            /* rich mid-green foliage */
-  --moss:#2E8B57;            /* softer fern/moss tone */
-  --sunlight:#E5A23D;        /* filtered orange-gold sunlight */
-  --mist:#E9F4EC;            /* pale mist light background */
-  --bark:#F6F5F0;            /* off-white panel background */
-  --back:#fff;
-  --shadow:0 10px 26px rgba(0,0,0,.15);
-  --gray:#6b7280;
-  --fresco:#284438;
-  --slate:#3b3a37;
-  --paleb:#f1f5f9;
-  --dblue:#334155;
-  --vdblue:#111827;
-  --burst:#374151;
-  --dbrown:#5a4520;
+    :root{
+      /* Base tokens (overridden per theme as needed) */
+      --radius-2:12px;
+      --radius-3:18px;
+      --shadow:0 10px 26px rgba(0,0,0,.15);
 
+      /* Buttons / accents that some themes reuse */
+      --sky:#4F46E5;        /* for CTA gradient fallback */
+      --tangerine:#F59E0B;
 
-  --bg:var(--mist);            /* misty background */
-  --panel:var(--bark);         /* soft neutral panels for readability */
-  --text:#12281C;              /* deep shadowed jungle text */
-  --muted:var(--moss);         /* secondary leafy green */
-  --link:var(--sunlight);      /* warm highlight accent */
-  --border:color-mix(in srgb, var(--fern) 35%, #fffff 65%);
-  --gold:var(--sunlight);      /* keeps news badge warm */
-  --radius-2:12px;
-  --radius-3:18px;
-}
+      /* Default (will be overridden by [data-theme]) */
+      --bg:#f6f7f8;
+      --panel:#ffffff;
+      --back:#ffffff;
+      --text:#1f2937;
+      --muted:#6b7280;
+      --link:#2563eb;
+      --border:#e5e7eb;
+      --gold:#f59e0b;
+      --chip-text:#0f172a;
+      --dot-from:#fbbf24;
+      --dot-to:#f59e0b;
+    }
+
+    /* ========================= THEMES ========================= */
+
+    /* Light (neutral) */
+    html[data-theme="light"]{
+      color-scheme: light;
+      --bg:#f6f7f8;
+      --panel:#ffffff;
+      --back:#ffffff;
+      --text:#1f2937;
+      --muted:#6b7280;
+      --link:#2563eb;
+      --border:#e5e7eb;
+      --gold:#f59e0b;
+      --chip-text:#0f172a;
+      --dot-from:#93c5fd;
+      --dot-to:#2563eb;
+    }
+
+    /* Dark */
+    html[data-theme="dark"]{
+      color-scheme: dark;
+      --bg:#0b1220;
+      --panel:#0f172a;
+      --back:#111827;
+      --text:#e5e7eb;
+      --muted:#9ca3af;
+      --link:#93c5fd;
+      --border:#1f2937;
+      --gold:#f59e0b;
+      --chip-text:#e5e7eb;
+      --dot-from:#fde68a;
+      --dot-to:#f59e0b;
+      --shadow:0 12px 28px rgba(0,0,0,.45);
+    }
+
+    /* Blue */
+    html[data-theme="blue"]{
+      --bg:#eef4ff;
+      --panel:#ffffff;
+      --back:#ffffff;
+      --text:#0f172a;
+      --muted:#475569;
+      --link:#2563eb;
+      --border:#c7d2fe;
+      --gold:#2563eb;
+      --chip-text:#0f172a;
+      --dot-from:#93c5fd;
+      --dot-to:#1d4ed8;
+    }
+
+    /* Green (your “jungle” vibe, default) */
+    html[data-theme="green"]{
+      --bg:#E9F4EC;      /* mist */
+      --panel:#F6F5F0;   /* bark */
+      --back:#ffffff;
+      --text:#12281C;
+      --muted:#2E8B57;   /* moss */
+      --link:#E5A23D;    /* sunlight */
+      --border:#cfe5d6;
+      --gold:#E5A23D;
+      --chip-text:#0b3a2b;
+      --dot-from:#E5A23D;
+      --dot-to:#b7791f;
+    }
+
+    /* Orange */
+    html[data-theme="orange"]{
+      --bg:#FFF7ED;
+      --panel:#ffffff;
+      --back:#ffffff;
+      --text:#1f2937;
+      --muted:#b45309;
+      --link:#ea580c;
+      --border:#fed7aa;
+      --gold:#f97316;
+      --chip-text:#7c2d12;
+      --dot-from:#fbbf24;
+      --dot-to:#f97316;
+    }
 
     *{box-sizing:border-box}
     html,body{height:100%}
@@ -55,39 +127,46 @@
     a{color:var(--link); text-decoration:none}
     a:hover{text-decoration:underline}
 
-    /* Top nav (neutral) */
+    /* Top nav */
     .topnav{position:sticky; top:0; z-index:100; background:rgba(255,255,255,.92); backdrop-filter:saturate(120%) blur(8px); border-bottom:1px solid var(--border)}
-    .topnav-inner{max-width:1200px; margin:0 auto; padding:12px 16px; display:flex; align-items:center; justify-content:flex-end; gap:10px}
+    html[data-theme="dark"] .topnav{background:rgba(15,23,42,.7)}
+    .topnav-inner{max-width:1200px; margin:0 auto; padding:12px 16px; display:flex; align-items:center; gap:12px; justify-content:space-between}
     .tabs{display:flex; gap:8px; overflow:auto; -webkit-overflow-scrolling:touch; scrollbar-width:none}
     .tabs::-webkit-scrollbar{display:none}
-    .tabs a{white-space:nowrap; padding:8px 14px; border:1px solid var(--border); border-radius:10px; background:back; font-size:14px; color:var(--slate); transition:all .18s ease}
-    .contact{margin-top:16px; font-size:14px; color:var(--fresco)}
+    .tabs a{white-space:nowrap; padding:8px 14px; border:1px solid var(--border); border-radius:10px; background:var(--back); font-size:14px; color:var(--text); transition:all .18s ease}
+
+    /* Theme control */
+    .theme-switcher{display:flex; align-items:center; gap:8px}
+    .theme-select{
+      padding:8px 12px; border:1px solid var(--border); background:var(--back); color:var(--text);
+      border-radius:10px; font-size:14px;
+    }
 
     /* Layout */
     .wrapper{display:grid; grid-template-columns:320px 1fr; gap:28px; max-width:1200px; margin:28px auto 64px; padding:0 16px}
     .sidebar{position:sticky; top:76px; height:fit-content; background:var(--panel); border:1px solid var(--border); border-radius:var(--radius-3); box-shadow:var(--shadow); padding:22px}
     .profile{display:flex; align-items:center; gap:14px}
-    .avatar{border-radius:50%; width:92px; height:92px; object-fit:cover; border:2px solid var(--paleb)}
+    .avatar{border-radius:50%; width:92px; height:92px; object-fit:cover; border:2px solid var(--border)}
     h1{font-size:24px; margin:0}
     .role{margin-top:6px; color:var(--muted)}
     .chips{margin-top:14px; display:flex; flex-wrap:wrap; gap:8px}
-    .chip{background:color-mix(in srgb, var(--gold) 18%, back 82%); color:var(--evergreen); border:1px solid var(--border); padding:6px 10px; font-size:12px; border-radius:999px}
+    .chip{background:color-mix(in srgb, var(--gold) 18%, var(--back) 82%); color:var(--chip-text); border:1px solid var(--border); padding:6px 10px; font-size:12px; border-radius:999px}
     .links{margin-top:16px; display:flex; gap:12px; font-size:22px; flex-wrap:wrap}
-    .links a{display:inline-flex; width:36px; height:36px; align-items:center; justify-content:center; border-radius:8px; background:back; border:1px solid var(--border)}
-    .contact{margin-top:16px; font-size:14px; color:var(--dblue)}
+    .links a{display:inline-flex; width:36px; height:36px; align-items:center; justify-content:center; border-radius:8px; background:var(--back); border:1px solid var(--border); color:var(--text)}
+    .contact{margin-top:16px; font-size:14px; color:var(--muted)}
 
     .main{display:flex; flex-direction:column; gap:22px}
     .card{background:var(--panel); border:1px solid var(--border); border-radius:var(--radius-3); box-shadow:var(--shadow); padding:22px; scroll-margin-top:84px}
     .section-title{display:flex; align-items:center; gap:10px; font-size:18px; margin:0 0 10px}
-    .section-title .dot{width:8px;height:8px;border-radius:50%;background:radial-gradient(circle at 35% 35%, var(--maple), var(--gold));}
+    .section-title .dot{width:8px;height:8px;border-radius:50%;background:radial-gradient(circle at 35% 35%, var(--dot-from), var(--dot-to));}
     p{margin:10px 0}
 
-    /* Publications (venue on its own line BEFORE authors) */
+    /* Publications */
     .pub{padding:16px; border:1px solid var(--border); border-radius:var(--radius-2); background:var(--back)}
     .pub + .pub{margin-top:12px}
     .pub-title{font-weight:600; font-size:16px}
-    .venue{margin:6px 0 4px; font-size:13px; color:var(--gray)}
-    .authors{font-size:14px; color:var(--vdblue)}
+    .venue{margin:6px 0 4px; font-size:13px; color:var(--muted)}
+    .authors{font-size:14px; color:var(--text)}
     .me{color:inherit; text-decoration:underline; text-decoration-thickness:2px; text-underline-offset:3px}
     .links-row{margin-top:6px; font-size:14px}
 
@@ -96,15 +175,15 @@
     .exp-item{padding:12px 14px; border-radius:var(--radius-2); border:1px solid var(--border); background:var(--back)}
     .exp-top{display:flex; justify-content:space-between; align-items:center; gap:8px}
     .exp-title{font-weight:600}
-    .time{font-size:12px; color:var(--gray)}
-    .company{font-size:14px; color:var(--burst); margin-top:4px}
+    .time{font-size:12px; color:var(--muted)}
+    .company{font-size:14px; color:var(--text); margin-top:4px}
 
-    footer{max-width:1200px; margin:24px auto 36px; padding:0 16px; color:var(--gray); font-size:12px; text-align:center}
+    footer{max-width:1200px; margin:24px auto 36px; padding:0 16px; color:var(--muted); font-size:12px; text-align:center}
 
     /* Responsive */
     @media (max-width: 900px){ .wrapper{grid-template-columns:1fr; gap:18px} .sidebar{position:static} }
     @media (max-width: 640px){
-      .topnav-inner{justify-content:flex-start}
+      .topnav-inner{flex-wrap:wrap}
       .tabs a{font-size:13px; padding:6px 10px}
       .avatar{width:72px; height:72px}
       .card{padding:18px}
@@ -112,7 +191,7 @@
       h1{font-size:20px}
     }
 
-        /* Call-to-action: Contact button (desktop: FAB, mobile: sticky bottom bar) */
+    /* CTA (kept for future use) */
     .cta-fab{
       position:fixed; right:22px; bottom:22px; z-index:2000; border:none; cursor:pointer;
       background:linear-gradient(135deg, var(--sky), var(--tangerine)); color:white; font-weight:700;
@@ -120,16 +199,14 @@
       display:flex; align-items:center; gap:10px; font-size:15px;
       transition:transform .15s ease, box-shadow .2s ease;
     }
-     .cta-fab:hover{transform:translateY(-2px); box-shadow:0 20px 34px rgba(0,0,0,.22)}
-    .cta-fab i{font-size:18px}
+    .cta-fab:hover{transform:translateY(-2px); box-shadow:0 20px 34px rgba(0,0,0,.22)}
 
-  
-    /* News styles */
+    /* News */
     .news-list{list-style:none;margin:0;padding:0}
     .news-item{padding:10px 12px;border:1px solid var(--border);background:var(--back);border-radius:var(--radius-2);margin-top:10px}
     .news-item:first-child{margin-top:0}
-    .news-date{display:inline-block;font-weight:600;color:var(--evergreen);margin-right:8px}
-    .news-badge{display:inline-block;background:color-mix(in srgb, var(--gold) 22%, var(--back) 78%);border:1px solid var(--gold);padding:2px 6px;border-radius:999px;font-size:12px;margin-left:6px;color:#5a4520}
+    .news-date{display:inline-block;font-weight:600;color:var(--muted);margin-right:8px}
+    .news-badge{display:inline-block;background:color-mix(in srgb, var(--gold) 22%, var(--back) 78%);border:1px solid var(--gold);padding:2px 6px;border-radius:999px;font-size:12px;margin-left:6px;color:var(--chip-text)}
   </style>
 </head>
 <body>
@@ -141,6 +218,17 @@
         <a href="#experience">Experience</a>
         <a href="#teaching">Teaching</a>
       </nav>
+
+      <div class="theme-switcher">
+        <label for="theme-select" class="visually-hidden">Theme</label>
+        <select id="theme-select" class="theme-select" aria-label="Select theme">
+          <option value="green">Green</option>
+          <option value="light">Light</option>
+          <option value="dark">Dark</option>
+          <option value="blue">Blue</option>
+          <option value="orange">Orange</option>
+        </select>
+      </div>
     </div>
   </header>
 
@@ -167,14 +255,11 @@
         <a href="https://www.linkedin.com/in/sepidh/" title="LinkedIn"><i class="bi bi-linkedin"></i></a>
         <a href="https://scholar.google.com/citations?user=G0OoPZAAAAAJ&hl=en" title="Google Scholar"><i class="ai ai-google-scholar"></i></a>
         <a href="https://github.com/sepidsh" title="GitHub"><i class="bi bi-github"></i></a>
- <a href="https://sepidsh.github.io/Sepidehsadat_Sepid__HOSSEINI_CV.pdf" title="CV (PDF)">
-  CV
-</a>
+        <a href="https://sepidsh.github.io/Sepidehsadat_Sepid__HOSSEINI_CV.pdf" title="CV (PDF)">CV</a>
       </div>
 
       <div class="contact">Vancouver, Canada · <a href="mailto:sepidh@sfu.ca">sepidh@sfu.ca</a></div>
     </aside>
-
 
     <!-- Main Content -->
     <section class="main">
@@ -193,41 +278,35 @@
       <section class="card" id="news">
         <h2 class="section-title"><span class="dot"></span>News</h2>
         <ul class="news-list">
-             <li class="news-item"><span class="news-date"> Jun 2025</span> <em>Scalable Temporal Domain Generalization via Prompting</em> accepted to ICML 2025, Workshop of Test-Time Adaptation.</li>
-          <li class="news-item"><span class="news-date"> January 2025</span> <em>RADAR: Robust Adaptive Decoding through Attention Regularization</em> accepted to ICLR 2025. </li>
+          <li class="news-item"><span class="news-date">Jun 2025</span> <em>Scalable Temporal Domain Generalization via Prompting</em> accepted to ICML 2025, Workshop of Test-Time Adaptation.</li>
+          <li class="news-item"><span class="news-date">Jan 2025</span> <em>RADAR: Robust Adaptive Decoding through Attention Regularization</em> accepted to ICLR 2025.</li>
           <li class="news-item"><span class="news-date">Dec 2023</span> Joined <em>RBC Borealis</em> as Machine Learning Researcher.</li>
-          <li class="news-item"><span class="news-date"> September 2023</span> <em>PuzzleFusion</em> accepted to NeurIPS 2023 </li>
+          <li class="news-item"><span class="news-date">Sep 2023</span> <em>PuzzleFusion</em> accepted to NeurIPS 2023.</li>
         </ul>
       </section>
 
-       <!-- Experience -->
+      <!-- Experience -->
       <section class="card" id="experience">
         <h2 class="section-title"><span class="dot"></span>Work Experience</h2>
         <div class="grid-2">
           <div class="exp-item"><div class="exp-top"><div class="exp-title">RBC Borealis</div><div class="time">Dec 2023 – Present</div></div><div class="company">Machine Learning Researcher</div></div>
-
           <div class="exp-item"><div class="exp-top"><div class="exp-title">Borealis AI</div><div class="time">Summer 2023</div></div><div class="company">Machine Learning Research Intern</div></div>
-
           <div class="exp-item"><div class="exp-top"><div class="exp-title">LG Electronics, Intelligent Systems Research Center</div><div class="time">Summer 2017</div></div><div class="company">Research Intern</div></div>
-
           <div class="exp-item"><div class="exp-top"><div class="exp-title">Samsung Techwin, Software Development Center</div><div class="time">Summer 2015</div></div><div class="company">Software Engineer Intern</div></div>
         </div>
       </section>
 
-
-      <!-- Publications (venue line before authors) -->
+      <!-- Publications -->
       <section class="card" id="publications">
         <h2 class="section-title"><span class="dot"></span>Selected Publications</h2>
 
-        
         <div class="pub">
           <div class="pub-title">Scalable Temporal Domain Generalization via Prompting</div>
-          <div class="venue">ICLM 2025,Workshop of Test-Time Adaptation </div>
-          <div class="authors"><span class="me">Sepidehsadat Hosseini</span>, Mengyao Zhai, Hossein Hajimirsadeghi, , Frederick Tung</div>
-          <div class="links-row">Links: <a href="https://arxiv.org/abs/2503.10571">Paper</a> · <a href="https://github.com/BorealisAI/radar-decoding">Code</a></div>
+          <div class="venue">ICML 2025, Workshop of Test-Time Adaptation</div>
+          <div class="authors"><span class="me">Sepidehsadat Hosseini</span>, Mengyao Zhai, Hossein Hajimirsadeghi, Frederick Tung</div>
+          <div class="links-row">Links: <a href="https://arxiv.org/abs/2503.10571">Paper</a></div>
         </div>
 
-        
         <div class="pub">
           <div class="pub-title">RADAR: Robust Adaptive Decoding through Attention Regularization</div>
           <div class="venue">ICLR 2025</div>
@@ -270,7 +349,6 @@
           <div class="links-row">Links: <a href="https://ieeexplore.ieee.org/document/8756552">Paper</a></div>
         </div>
 
-        
         <div class="pub">
           <div class="pub-title">Deep Multi-Dataset Multi-Domain Multi-Task Frameworks for Facial Expression Recognition, Age and Gender Estimation</div>
           <div class="venue">Master’s Thesis Summary, 2019</div>
@@ -285,44 +363,74 @@
           <div class="links-row">Links: <a href="https://ieeexplore.ieee.org/document/8388318">Paper</a></div>
         </div>
       </section>
-     
 
-<!-- Teaching -->
-<section class="card" id="teaching">
-  <h2 class="section-title"><span class="dot"></span>Teaching Experience</h2>
-  <div class="grid-2">
-    <div class="exp-item"><div class="exp-top"><div class="exp-title">CMPT 412 Computational Vision</div><div class="time">Spring 2023</div></div><div class="company">Teaching Assistant</div></div>
+      <!-- Teaching -->
+      <section class="card" id="teaching">
+        <h2 class="section-title"><span class="dot"></span>Teaching Experience</h2>
+        <div class="grid-2">
+          <div class="exp-item"><div class="exp-top"><div class="exp-title">CMPT 412 Computational Vision</div><div class="time">Spring 2023</div></div><div class="company">Teaching Assistant</div></div>
 
-    <div class="exp-item"><div class="exp-top"><div class="exp-title">CMPT 477 Intro to Formal Verification</div><div class="time">Fall 2022</div></div><div class="company">Teaching Assistant</div></div>
+          <div class="exp-item"><div class="exp-top"><div class="exp-title">CMPT 477 Intro to Formal Verification</div><div class="time">Fall 2022</div></div><div class="company">Teaching Assistant</div></div>
 
-    <div class="exp-item"><div class="exp-top"><div class="exp-title">CMPT 225 Data Structures and Programming</div><div class="time">Summer 2022</div></div><div class="company">Teaching Assistant</div></div>
+          <div class="exp-item"><div class="exp-top"><div class="exp-title">CMPT 225 Data Structures and Programming</div><div class="time">Summer 2022</div></div><div class="company">Teaching Assistant</div></div>
 
-    <div class="exp-item"><div class="exp-top"><div class="exp-title">CMPT 125 Introduction to Computing Science and Programming II</div><div class="time">Spring 2022, Fall 2021, Summer 2021, Fall 2020, Summer 2020</div></div><div class="company">Teaching Assistant</div></div>
+          <div class="exp-item"><div class="exp-top"><div class="exp-title">CMPT 125 Introduction to Computing Science and Programming II</div><div class="time">Spring 2022, Fall 2021, Summer 2021, Fall 2020, Summer 2020</div></div><div class="company">Teaching Assistant</div></div>
 
-    <div class="exp-item"><div class="exp-top"><div class="exp-title">CMPT 419 Machine Learning</div><div class="time">Spring 2021</div></div><div class="company">Teaching Assistant</div></div>
-  </div>
-</section>
+          <div class="exp-item"><div class="exp-top"><div class="exp-title">CMPT 419 Machine Learning</div><div class="time">Spring 2021</div></div><div class="company">Teaching Assistant</div></div>
+        </div>
+      </section>
+    </section>
+  </main>
 
+  <footer>
+    © <span id="year"></span> Sepidehsadat Hosseini
+  </footer>
 
+  <script>
+    // Accessibility helper for hidden label
+    (function addVisuallyHiddenStyle(){
+      const css = document.createElement('style');
+      css.textContent = '.visually-hidden{position:absolute!important;clip:rect(1px,1px,1px,1px);padding:0!important;border:0!important;height:1px!important;width:1px!important;overflow:hidden!important;white-space:nowrap!important;}';
+      document.head.appendChild(css);
+    })();
 
+    const THEME_KEY = 'site-theme';
+    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const selectEl = document.getElementById('theme-select');
 
+    function applyTheme(theme){
+      document.documentElement.setAttribute('data-theme', theme);
+      try{ localStorage.setItem(THEME_KEY, theme); }catch(e){}
+      // Keep the <select> in sync if changed programmatically
+      if(selectEl && selectEl.value !== theme){
+        selectEl.value = theme;
+      }
+    }
 
+    // Initialize theme on first load
+    (function initTheme(){
+      let saved = null;
+      try { saved = localStorage.getItem(THEME_KEY); } catch(e){}
+      // default to green unless user prefers dark and hasn't chosen yet
+      const initial = saved || (prefersDark ? 'dark' : document.documentElement.getAttribute('data-theme') || 'green');
+      applyTheme(initial);
+    })();
 
+    // Listen to OS theme changes only if user hasn't explicitly chosen
+    const mq = window.matchMedia('(prefers-color-scheme: dark)');
+    mq.addEventListener?.('change', e => {
+      let saved = null;
+      try { saved = localStorage.getItem(THEME_KEY); } catch(err){}
+      if(!saved){ applyTheme(e.matches ? 'dark' : 'light'); }
+    });
 
+    // Hook up the select
+    selectEl.addEventListener('change', (e) => {
+      applyTheme(e.target.value);
+    });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    // Set current year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
