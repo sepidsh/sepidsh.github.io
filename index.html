@@ -432,7 +432,7 @@
     (function initTheme(){
       const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
       const saved = loadTheme();
-      const initial = saved || (prefersDark ? 'dark' : document.documentElement.getAttribute('data-theme') || 'green');
+      const initial = saved  || 'green';
       applyTheme(initial);
     })();
 
@@ -450,6 +450,7 @@
   </script>
 </body>
 </html>
+
 
 
 
