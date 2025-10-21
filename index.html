@@ -31,7 +31,11 @@
   --fresco:#284438;
   --slate:#3b3a37;
   --paleb:#f1f5f9;
-  
+  --dblue:#334155;
+  --vdblue:#111827;
+  --burst:#374151;
+  --dbrown:#5a4520;
+
 
   --bg:var(--mist);            /* misty background */
   --panel:var(--bark);         /* soft neutral panels for readability */
@@ -70,7 +74,7 @@
     .chip{background:color-mix(in srgb, var(--gold) 18%, back 82%); color:var(--evergreen); border:1px solid var(--border); padding:6px 10px; font-size:12px; border-radius:999px}
     .links{margin-top:16px; display:flex; gap:12px; font-size:22px; flex-wrap:wrap}
     .links a{display:inline-flex; width:36px; height:36px; align-items:center; justify-content:center; border-radius:8px; background:back; border:1px solid var(--border)}
-    .contact{margin-top:16px; font-size:14px; color:#334155}
+    .contact{margin-top:16px; font-size:14px; color:var(--dblue)}
 
     .main{display:flex; flex-direction:column; gap:22px}
     .card{background:var(--panel); border:1px solid var(--border); border-radius:var(--radius-3); box-shadow:var(--shadow); padding:22px; scroll-margin-top:84px}
@@ -82,8 +86,8 @@
     .pub{padding:16px; border:1px solid var(--border); border-radius:var(--radius-2); background:var(--back)}
     .pub + .pub{margin-top:12px}
     .pub-title{font-weight:600; font-size:16px}
-    .venue{margin:6px 0 4px; font-size:13px; color:#6b7280}
-    .authors{font-size:14px; color:#111827}
+    .venue{margin:6px 0 4px; font-size:13px; color:var(--gray)}
+    .authors{font-size:14px; color:var(--vdblue)}
     .me{color:inherit; text-decoration:underline; text-decoration-thickness:2px; text-underline-offset:3px}
     .links-row{margin-top:6px; font-size:14px}
 
@@ -93,7 +97,7 @@
     .exp-top{display:flex; justify-content:space-between; align-items:center; gap:8px}
     .exp-title{font-weight:600}
     .time{font-size:12px; color:var(--gray)}
-    .company{font-size:14px; color:#374151; margin-top:4px}
+    .company{font-size:14px; color:var(--burst); margin-top:4px}
 
     footer{max-width:1200px; margin:24px auto 36px; padding:0 16px; color:var(--gray); font-size:12px; text-align:center}
 
@@ -298,6 +302,7 @@
     <div class="exp-item"><div class="exp-top"><div class="exp-title">CMPT 419 Machine Learning</div><div class="time">Spring 2021</div></div><div class="company">Teaching Assistant</div></div>
   </div>
 </section>
+
 
 
 
