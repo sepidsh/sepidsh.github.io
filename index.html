@@ -25,6 +25,7 @@
   --sunlight:#E5A23D;        /* filtered orange-gold sunlight */
   --mist:#E9F4EC;            /* pale mist light background */
   --bark:#F6F5F0;            /* off-white panel background */
+  --back:back
   --shadow:0 10px 26px rgba(0,0,0,.15);
 
   --bg:var(--mist);            /* misty background */
@@ -32,7 +33,7 @@
   --text:#12281C;              /* deep shadowed jungle text */
   --muted:var(--moss);         /* secondary leafy green */
   --link:var(--sunlight);      /* warm highlight accent */
-  --border:color-mix(in srgb, var(--fern) 35%, #ffffff 65%);
+  --border:color-mix(in srgb, var(--fern) 35%, backfff 65%);
   --gold:var(--sunlight);      /* keeps news badge warm */
   --radius-2:12px;
   --radius-3:18px;
@@ -50,7 +51,7 @@
     .topnav-inner{max-width:1200px; margin:0 auto; padding:12px 16px; display:flex; align-items:center; justify-content:flex-end; gap:10px}
     .tabs{display:flex; gap:8px; overflow:auto; -webkit-overflow-scrolling:touch; scrollbar-width:none}
     .tabs::-webkit-scrollbar{display:none}
-    .tabs a{white-space:nowrap; padding:8px 14px; border:1px solid var(--border); border-radius:10px; background:#fff; font-size:14px; color:#3b3a37; transition:all .18s ease}
+    .tabs a{white-space:nowrap; padding:8px 14px; border:1px solid var(--border); border-radius:10px; background:back; font-size:14px; color:#3b3a37; transition:all .18s ease}
     .contact{margin-top:16px; font-size:14px; color:#284438}
 
     /* Layout */
@@ -61,9 +62,9 @@
     h1{font-size:24px; margin:0}
     .role{margin-top:6px; color:var(--muted)}
     .chips{margin-top:14px; display:flex; flex-wrap:wrap; gap:8px}
-    .chip{background:color-mix(in srgb, var(--gold) 18%, #fff 82%); color:var(--evergreen); border:1px solid var(--border); padding:6px 10px; font-size:12px; border-radius:999px}
+    .chip{background:color-mix(in srgb, var(--gold) 18%, back 82%); color:var(--evergreen); border:1px solid var(--border); padding:6px 10px; font-size:12px; border-radius:999px}
     .links{margin-top:16px; display:flex; gap:12px; font-size:22px; flex-wrap:wrap}
-    .links a{display:inline-flex; width:36px; height:36px; align-items:center; justify-content:center; border-radius:8px; background:#fff; border:1px solid var(--border)}
+    .links a{display:inline-flex; width:36px; height:36px; align-items:center; justify-content:center; border-radius:8px; background:back; border:1px solid var(--border)}
     .contact{margin-top:16px; font-size:14px; color:#334155}
 
     .main{display:flex; flex-direction:column; gap:22px}
@@ -73,7 +74,7 @@
     p{margin:10px 0}
 
     /* Publications (venue on its own line BEFORE authors) */
-    .pub{padding:16px; border:1px solid var(--border); border-radius:var(--radius-2); background:#fff}
+    .pub{padding:16px; border:1px solid var(--border); border-radius:var(--radius-2); background:back}
     .pub + .pub{margin-top:12px}
     .pub-title{font-weight:600; font-size:16px}
     .venue{margin:6px 0 4px; font-size:13px; color:#6b7280}
@@ -83,7 +84,7 @@
 
     /* Experience/Teaching grid */
     .grid-2{display:grid; grid-template-columns:1fr 1fr; gap:16px}
-    .exp-item{padding:12px 14px; border-radius:var(--radius-2); border:1px solid var(--border); background:#fff}
+    .exp-item{padding:12px 14px; border-radius:var(--radius-2); border:1px solid var(--border); background:back}
     .exp-top{display:flex; justify-content:space-between; align-items:center; gap:8px}
     .exp-title{font-weight:600}
     .time{font-size:12px; color:#6b7280}
@@ -116,10 +117,10 @@
   
     /* News styles */
     .news-list{list-style:none;margin:0;padding:0}
-    .news-item{padding:10px 12px;border:1px solid var(--border);background:#fff;border-radius:var(--radius-2);margin-top:10px}
+    .news-item{padding:10px 12px;border:1px solid var(--border);background:back;border-radius:var(--radius-2);margin-top:10px}
     .news-item:first-child{margin-top:0}
     .news-date{display:inline-block;font-weight:600;color:var(--evergreen);margin-right:8px}
-    .news-badge{display:inline-block;background:color-mix(in srgb, var(--gold) 22%, #fff 78%);border:1px solid var(--gold);padding:2px 6px;border-radius:999px;font-size:12px;margin-left:6px;color:#5a4520}
+    .news-badge{display:inline-block;background:color-mix(in srgb, var(--gold) 22%, back 78%);border:1px solid var(--gold);padding:2px 6px;border-radius:999px;font-size:12px;margin-left:6px;color:#5a4520}
   </style>
 </head>
 <body>
@@ -292,6 +293,7 @@
     <div class="exp-item"><div class="exp-top"><div class="exp-title">CMPT 419 Machine Learning</div><div class="time">Spring 2021</div></div><div class="company">Teaching Assistant</div></div>
   </div>
 </section>
+
 
 
 
