@@ -197,6 +197,37 @@
     .news-item:first-child{margin-top:0}
     .news-date{display:inline-block;font-weight:600;color:var(--muted);margin-right:8px}
     .news-badge{display:inline-block;background:color-mix(in srgb, var(--gold) 22%, var(--back) 78%);border:1px solid var(--gold);padding:2px 6px;border-radius:999px;font-size:12px;margin-left:6px;color:var(--chip-text)}
+  
+    /* Gradient name styling */
+    .grad-name{ 
+      background-image: linear-gradient(90deg, var(--name-grad-from), var(--name-grad-to));
+      -webkit-background-clip:text; background-clip:text; color:transparent;
+    }
+
+    /* Theme-specific gradients for name */
+    html[data-theme="light"], html[data-theme="blue"]{ --name-grad-from:#6366F1; --name-grad-to:#22D3EE; }
+    html[data-theme="green"]{ --name-grad-from:#2E8B57; --name-grad-to:#E5A23D; }
+    html[data-theme="orange"]{ --name-grad-from:#F59E0B; --name-grad-to:#FB7185; }
+    html[data-theme="dark"]{ --name-grad-from:#60A5FA; --name-grad-to:#A78BFA; }
+
+    /* Smoothen theme transitions */
+    body, .card, .sidebar, .tabs a, .exp-item, .pub{ transition: background-color .25s, color .25s, border-color .25s; }
+
+    /* Contact FAB */
+    .cta-fab{
+      position:fixed; right:22px; bottom:22px; z-index:2000; border:none; cursor:pointer;
+      background:linear-gradient(135deg, var(--sky), var(--tangerine)); color:white; font-weight:700;
+      padding:14px 18px; border-radius:999px; box-shadow:0 14px 30px rgba(0,0,0,.18);
+      display:flex; align-items:center; gap:10px; font-size:15px;
+      transition:transform .15s ease, box-shadow .2s ease; text-decoration:none
+    }
+    .cta-fab:hover{transform:translateY(-2px); box-shadow:0 20px 34px rgba(0,0,0,.22)}
+    .cta-fab i{font-size:18px}
+
+    /* Respect reduced motion */
+    @media (prefers-reduced-motion: reduce){
+      *, *::before, *::after{ transition:none !important; }
+    }
   </style>
 </head>
 <body>
@@ -211,11 +242,11 @@
 
       <!-- Cute theme dots -->
       <div class="theme-dots" role="group" aria-label="Theme">
-        <button class="theme-dot" data-theme="light" style="background:#D5FFFF" title="Light" aria-label="Light"></button>
-        <button class="theme-dot" data-theme="dark" style="background:#000080" title="Dark" aria-label="Dark"></button>
-        <button class="theme-dot" data-theme="blue" style="background:#89CFF0" title="Blue" aria-label="Blue"></button>
-        <button class="theme-dot" data-theme="green" style="background:#355E3B" title="Green" aria-label="Green"></button>
-        <button class="theme-dot" data-theme="orange" style="background:#FFAC1C" title="Orange" aria-label="Orange"></button>
+        <button class="theme-dot" data-theme="light" style="background:#93c5fd" title="Light" aria-label="Light"></button>
+        <button class="theme-dot" data-theme="dark" style="background:#f59e0b" title="Dark" aria-label="Dark"></button>
+        <button class="theme-dot" data-theme="blue" style="background:#3b82f6" title="Blue" aria-label="Blue"></button>
+        <button class="theme-dot" data-theme="green" style="background:#10b981" title="Green" aria-label="Green"></button>
+        <button class="theme-dot" data-theme="orange" style="background:#fb923c" title="Orange" aria-label="Orange"></button>
       </div>
     </div>
   </header>
@@ -226,7 +257,7 @@
       <div class="profile">
         <img class="avatar" src="images/profpic.jpeg" alt="Sepidehsadat Hosseini" />
         <div>
-          <h1>Sepid (Sepidehsadat) Hosseini</h1>
+          <h1 class="grad-name">Sepid (Sepidehsadat) Hosseini</h1>
           <div class="role">Machine Learning Researcher @ RBC Borealis</div>
         </div>
       </div>
@@ -369,6 +400,12 @@
       </section>
     </section>
   </main>
+
+  <!-- Contact me floating button -->
+  <a href="mailto:sepidh@sfu.ca" class="cta-fab" aria-label="Contact me via email">
+    <i class="bi bi-envelope-fill" aria-hidden="true"></i>
+    Contact me
+  </a>
 
   <footer>
     © <span id="year"></span> Sepidehsadat Hosseini
