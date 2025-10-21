@@ -75,20 +75,23 @@
       --shadow:0 12px 28px rgba(0,0,0,.45);
     }
 
-    /* Blue */
-    html[data-theme="blue"]{
-      --bg:#eef4ff;
-      --panel:#ffffff;
-      --back:#ffffff;
-      --text:#0f172a;
-      --muted:#475569;
-      --link:#2563eb;
-      --border:#c7d2fe;
-      --gold:#2563eb;
-      --chip-text:#0f172a;
-      --dot-from:#93c5fd;
-      --dot-to:#1d4ed8;
-    }
+   /* Improved BLUE theme */
+html[data-theme="blue"]{
+  /* Palette tuned for clarity & contrast */
+  --bg:#F3F6FF;          /* soft misty blue background */
+  --panel:#FFFFFF;       /* cards/panels */
+  --back:#FFFFFF;        /* inline elements (chips, link blocks) */
+  --text:#0B1220;        /* near-black for strong readability */
+  --muted:#475569;       /* slate for secondary text */
+  --link:#1E40AF;        /* indigo-800 links */
+  --border:#D6E3FF;      /* gentle blue border */
+  --gold:#2563EB;        /* badge/cta accent */
+  --chip-text:#0B1220;   /* chip text */
+  --dot-from:#93C5FD;    /* section dot gradient start */
+  --dot-to:#1E3A8A;      /* section dot gradient end */
+  --shadow:0 12px 28px rgba(20, 32, 85, .12);
+}
+
 
     /* Green (jungle vibe) */
     html[data-theme="green"]{
@@ -450,6 +453,7 @@
   </script>
 </body>
 </html>
+
 
 
 
