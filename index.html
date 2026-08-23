@@ -181,7 +181,22 @@
     .plant:hover{animation-duration:.6s}
     @keyframes sway{0%,100%{transform:rotate(-6deg)}50%{transform:rotate(6deg)}}
 
-    /* ===== Background playground: gently unrolling yarn + following cat ===== */
+    /* ===== Bio doodles: sun & coffee ===== */
+    .doodle{display:inline-block; vertical-align:-4px; width:22px; height:20px; margin:0 2px}
+    .doodle.sun{width:22px; overflow:visible}
+    .sun .rays{transform-box:fill-box; transform-origin:50% 50%; animation:spin 14s linear infinite}
+    .sun .core{transform-box:fill-box; transform-origin:50% 50%; animation:pulse 2.8s ease-in-out infinite}
+    .sun .halo{transform-box:fill-box; transform-origin:50% 50%; animation:halo 2.8s ease-in-out infinite}
+    @keyframes spin{to{transform:rotate(360deg)}}
+    @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.12)}}
+    @keyframes halo{0%,100%{transform:scale(1);opacity:.25}50%{transform:scale(1.5);opacity:0}}
+    .mug .steam{fill:none; stroke:#A88B7A; stroke-width:1.4; stroke-linecap:round; opacity:0; animation:steam 2.6s ease-in-out infinite; transform-box:fill-box; transform-origin:50% 100%}
+    .mug .steam.s2{animation-delay:.8s}
+    .mug .steam.s3{animation-delay:1.6s}
+    @keyframes steam{0%{transform:translateY(3px) scaleX(1);opacity:0}30%{opacity:.7}100%{transform:translateY(-6px) scaleX(1.25);opacity:0}}
+    .mug:hover .steam{animation-duration:1.2s}
+
+    /* ===== Background playground: cat & yarn ===== */
     #playground{position:fixed; inset:0; z-index:0; pointer-events:none; overflow:hidden}
     #playground svg{position:absolute; inset:0; width:100%; height:100%; overflow:visible}
     .wrapper, footer{position:relative; z-index:1}
@@ -199,7 +214,7 @@
     @keyframes cat-bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-1.8px)}}
     @keyframes paw-step{0%,100%{transform:rotate(-5deg)}50%{transform:rotate(7deg)}}
     @keyframes tail-swish{0%,100%{transform:rotate(-7deg)}50%{transform:rotate(9deg)}}
-    @media (max-width: 900px){ #playground{display:none} }
+    @media (max-width: 700px){ #playground{display:none} }
 
     @media (prefers-reduced-motion: reduce){
       *, *::before, *::after{ transition:none !important; animation:none !important; }
@@ -209,41 +224,28 @@
 </head>
 <body>
 
-  <!-- Background playground: the yarn gently unrolls while a small cat follows it. -->
+  <!-- Background playground: the yarn unrolls and the cat follows. Click empty space to move the yarn. -->
   <div id="playground" aria-hidden="true">
     <svg id="pg-svg" xmlns="http://www.w3.org/2000/svg">
       <path id="thread" fill="none" stroke="var(--gold)" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" opacity=".52"/>
-
       <g id="yarn">
         <circle r="14" fill="var(--gold)"/>
-        <path d="M-11 -7 C-4 -11 5 -10 11 -5 M-13 0 C-5 5 5 5 13 0 M-10 8 C-2 3 4 4 10 8 M-6 -12 C-1 -5 0 4 -5 12 M6 -12 C2 -5 2 5 7 11"
-              fill="none" stroke="rgba(255,255,255,.80)" stroke-width="1.45" stroke-linecap="round"/>
+        <path d="M-11 -7 C-4 -11 5 -10 11 -5 M-13 0 C-5 5 5 5 13 0 M-10 8 C-2 3 4 4 10 8 M-6 -12 C-1 -5 0 4 -5 12 M6 -12 C2 -5 2 5 7 11" fill="none" stroke="rgba(255,255,255,.80)" stroke-width="1.45" stroke-linecap="round"/>
         <circle cx="-4.5" cy="-4.5" r="2.2" fill="rgba(255,255,255,.23)"/>
       </g>
-
       <g id="cat" class="cat-sprite">
         <g class="cat-body">
-          <!-- soft side-view body -->
           <ellipse cx="0" cy="2" rx="22" ry="13" fill="var(--muted)"/>
           <ellipse cx="17" cy="-3" rx="10" ry="11" fill="var(--muted)"/>
-
-          <!-- tail -->
-          <path class="tail" d="M-20 1 C-35 0 -39 -10 -34 -18 C-30 -24 -22 -24 -18 -19"
-                fill="none" stroke="var(--muted)" stroke-width="5" stroke-linecap="round"/>
-
-          <!-- little paws -->
+          <path class="tail" d="M-20 1 C-35 0 -39 -10 -34 -18 C-30 -24 -22 -24 -18 -19" fill="none" stroke="var(--muted)" stroke-width="5" stroke-linecap="round"/>
           <g transform="translate(-8,11)"><rect class="paw one" x="-2.6" y="0" width="5.2" height="10" rx="2.6" fill="var(--muted)"/></g>
           <g transform="translate(10,11)"><rect class="paw two" x="-2.6" y="0" width="5.2" height="10" rx="2.6" fill="var(--muted)"/></g>
-
-          <!-- round head -->
           <g transform="translate(25,-10)">
             <circle r="14" fill="var(--muted)"/>
             <path d="M-11 -7 L-9 -20 L-2 -11 Z" fill="var(--muted)"/>
             <path d="M11 -7 L9 -20 L2 -11 Z" fill="var(--muted)"/>
             <path class="ear-inner" d="M-8.5 -10 L-7.5 -16.5 L-4 -11.5 Z"/>
             <path class="ear-inner" d="M8.5 -10 L7.5 -16.5 L4 -11.5 Z"/>
-
-            <!-- sweet, simple face -->
             <path d="M-7 -1 Q-4.7 1 -2.4 -1" fill="none" stroke="var(--bg)" stroke-width="1.5" stroke-linecap="round"/>
             <path d="M2.4 -1 Q4.7 1 7 -1" fill="none" stroke="var(--bg)" stroke-width="1.5" stroke-linecap="round"/>
             <path d="M-1.5 3.2 L0 4.6 L1.5 3.2 Z" fill="var(--bg)"/>
@@ -255,6 +257,7 @@
       </g>
     </svg>
   </div>
+
   <header class="topnav">
     <div class="topnav-inner">
       <nav class="tabs" aria-label="Primary">
@@ -312,7 +315,8 @@
           <div class="rain" aria-hidden="true"></div>
           <p>I grew up by the sea in Anzali, a small city in Iran where it rains a lot. I moved to Korea right after high school, stayed long enough for rice, kimchi and a fried egg to remain my favourite comfort food, and eventually moved to Vancouver—apparently I have a thing for rainy cities.</p>
           <p>I now have several places I can call home and, somehow, no home at all.</p>
-          <p>I own an unreasonable number of plants <span class="plant" title="it's fine, it's fine">🪴</span>, take unnecessarily long walks, and have approximately 4,000 photos of light hitting buildings, trees, windows, and other things nobody asked me to photograph.</p>
+          <p>I own an unreasonable number of plants <span class="plant" title="it's fine, it's fine">🪴</span>, take unnecessarily long walks, and have approximately 4,000 photos of light <svg class="doodle sun" viewBox="0 0 22 22" aria-hidden="true"><circle class="halo" cx="11" cy="11" r="7" fill="#FFD21E"/><g class="rays" stroke="#FFB800" stroke-width="1.6" stroke-linecap="round"><path d="M11 1.5v3M11 17.5v3M1.5 11h3M17.5 11h3M4.3 4.3l2.1 2.1M15.6 15.6l2.1 2.1M4.3 17.7l2.1-2.1M15.6 6.4l2.1-2.1"/></g><circle class="core" cx="11" cy="11" r="4.2" fill="#FFD21E"/></svg> hitting buildings, trees, windows, and other things nobody asked me to photograph.</p>
+          <p>All of this runs on coffee <svg class="doodle mug" viewBox="0 0 22 20" aria-hidden="true"><path class="steam s1" d="M7 7c-1-1.5 1-2.5 0-4"/><path class="steam s2" d="M10.5 7c-1-1.5 1-2.5 0-4"/><path class="steam s3" d="M14 7c-1-1.5 1-2.5 0-4"/><path d="M3 9h14v5a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4z" fill="#7B4A2D"/><path d="M17 10.5h1.5a2.5 2.5 0 0 1 0 5H17" fill="none" stroke="#7B4A2D" stroke-width="1.6"/><rect x="4.5" y="10.5" width="11" height="2.2" rx="1" fill="#3E2314"/></svg> — an amount best described as “structural.”</p>
           <p>During the day, I spend my time convincing very large models to make slightly fewer bad decisions. The models occasionally listen to me. The plants mostly don’t.</p>
           <p class="rain-note">☔ current forecast: rain, obviously.</p>
           <button class="cloud-btn flip-toggle" type="button" aria-expanded="true" aria-controls="offduty">
@@ -474,66 +478,49 @@
       });
     });
 
-
     // ===== Cat & yarn playground =====
     (function(){
       const pg = document.getElementById('playground');
       if (!pg || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
       const cat = document.getElementById('cat');
       const yarn = document.getElementById('yarn');
       const thread = document.getElementById('thread');
       const wrap = document.querySelector('.wrapper');
-
       const W = () => window.innerWidth;
       const H = () => window.innerHeight;
       const strand = [];
-
       let yx = W() - 64, yy = H() * .76;
       let tx = yx, ty = yy;
       let cx = 64, cy = H() * .76;
       let dir = 1, yrot = 0, last = performance.now();
       let nextTargetAt = 0;
-
-      function margins(){
-        const r = wrap.getBoundingClientRect();
-        return { left:r.left, right:r.right };
-      }
-
-      function hasRoom(){ return margins().left >= 90; }
-
+      function margins(){ const r = wrap.getBoundingClientRect(); return { left:r.left, right:r.right }; }
+      function hasRoom(){ return margins().left >= 80; }
       function sideBounds(side){
         const m = margins();
+        if (!hasRoom()) return {min:40, max:W()-40};           // no margins: roam anywhere
         if (side === 'left') return {min:28, max:Math.max(36, m.left - 44)};
         return {min:Math.min(W()-36, m.right + 44), max:W()-28};
       }
-
       function nearestSide(x){
         const m = margins();
         if (x < m.left) return 'left';
         if (x > m.right) return 'right';
         return (x - m.left < m.right - x) ? 'left' : 'right';
       }
-
-      function clampToSide(x, side){
-        const b = sideBounds(side);
-        return Math.max(b.min, Math.min(b.max, x));
-      }
-
+      function clampToSide(x, side){ const b = sideBounds(side); return Math.max(b.min, Math.min(b.max, x)); }
       function chooseTarget(){
         const side = Math.random() < .5 ? 'left' : 'right';
         const b = sideBounds(side);
         tx = b.min + Math.random() * Math.max(1, b.max - b.min);
         ty = 90 + Math.random() * Math.max(120, H() - 175);
       }
-
       function moveTarget(x, y){
         const side = nearestSide(x);
         tx = clampToSide(x, side);
         ty = Math.max(80, Math.min(H()-38, y));
         nextTargetAt = performance.now() + 3600;
       }
-
       function strandPath(points){
         if (points.length < 2) return '';
         let d = `M ${points[0].x.toFixed(1)} ${points[0].y.toFixed(1)}`;
@@ -546,78 +533,46 @@
         d += ` T ${p.x.toFixed(1)} ${p.y.toFixed(1)}`;
         return d;
       }
-
       function rememberStrand(x,y){
         const prev = strand[strand.length-1];
         if (!prev || Math.hypot(x-prev.x, y-prev.y) > 5) {
-          // A tiny alternating offset makes the loose yarn look naturally wavy/unrolled.
           const wobble = Math.sin(strand.length * .9) * 3.2;
           strand.push({x, y:y+wobble});
         }
-        // Keep a pleasantly long loose thread without filling the whole page forever.
         while (strand.length > 86) strand.shift();
       }
-
       function place(){
-        pg.style.display = hasRoom() ? '' : 'none';
-        if (!hasRoom()) return;
         yx = clampToSide(yx, nearestSide(yx));
         cx = clampToSide(cx, nearestSide(cx));
         tx = clampToSide(tx, nearestSide(tx));
       }
-
       window.addEventListener('resize', place);
       document.addEventListener('click', e => {
-        if (e.target.closest('a, button, input, textarea, select, label, .card, .sidebar, .topnav')) return;
+        if (e.target.closest('a, button, input, textarea, select, label')) return;
         moveTarget(e.clientX, e.clientY);
       });
-
       chooseTarget();
       place();
-
+      let inited = false;
       function tick(now){
         const dt = Math.min(.04, (now-last)/1000 || 0);
         last = now;
-
-        if (now > nextTargetAt || Math.hypot(tx-yx, ty-yy) < 16) {
-          chooseTarget();
-          nextTargetAt = now + 3200 + Math.random()*2600;
-        }
-
-        // Yarn moves first, slowly rolling and unspooling behind itself.
+        if (!inited){ if (H() < 50){ requestAnimationFrame(tick); return; } inited = true; yy = cy = H()*.76; chooseTarget(); place(); }
+        if (now > nextTargetAt || Math.hypot(tx-yx, ty-yy) < 16) { chooseTarget(); nextTargetAt = now + 3200 + Math.random()*2600; }
         const ydx = tx-yx, ydy = ty-yy, ydist = Math.hypot(ydx,ydy);
-        if (ydist > .8) {
-          const speed = 52;
-          const step = Math.min(ydist, speed*dt);
-          yx += ydx/ydist * step;
-          yy += ydy/ydist * step;
-          yrot += step * 5.2;
-          rememberStrand(yx,yy);
-        }
-
-        // Cat follows rather than catching the yarn: it keeps a gentle gap.
+        if (ydist > .8) { const speed = 52; const step = Math.min(ydist, speed*dt); yx += ydx/ydist * step; yy += ydy/ydist * step; yrot += step * 5.2; rememberStrand(yx,yy); }
         const dx = yx-cx, dy = yy-cy, dist = Math.hypot(dx,dy);
         const followGap = 72;
         const walking = dist > followGap + 6;
-        if (walking) {
-          const speed = 61;
-          const step = Math.min(dist-followGap, speed*dt);
-          cx += dx/dist * step;
-          cy += dy/dist * step;
-          dir = dx >= 0 ? 1 : -1;
-        }
-
+        if (walking) { const speed = 61; const step = Math.min(dist-followGap, speed*dt); cx += dx/dist * step; cy += dy/dist * step; dir = dx >= 0 ? 1 : -1; }
         cat.classList.toggle('walking', walking);
-
         const yarnBob = Math.sin(now/310) * .9;
         const catBob = walking ? Math.sin(now/150) * .7 : 0;
         yarn.setAttribute('transform', `translate(${yx.toFixed(1)},${(yy+yarnBob).toFixed(1)}) rotate(${yrot.toFixed(1)})`);
         thread.setAttribute('d', strandPath(strand));
         cat.setAttribute('transform', `translate(${cx.toFixed(1)},${(cy+catBob).toFixed(1)}) scale(${dir},1)`);
-
         requestAnimationFrame(tick);
       }
-
       requestAnimationFrame(tick);
     })();
 
