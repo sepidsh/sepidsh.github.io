@@ -1,4 +1,4 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" data-theme="blue">
 <head>
   <meta charset="utf-8" />
@@ -8,25 +8,17 @@
   <meta name="description" content="Sepidehsadat Hosseini" />
   <link rel="shortcut icon" href="favicon.ico" />
 
-  <!-- Google Font: Roboto -->
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap" rel="stylesheet" />
-
-  <!-- Icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
 
   <style>
     :root{
-      /* Base tokens */
       --radius-2:12px;
       --radius-3:18px;
       --shadow:0 10px 26px rgba(0,0,0,.15);
-
-      /* Accent (kept for potential FAB) */
       --sky:#4F46E5;
       --tangerine:#F59E0B;
-
-      /* Defaults (overridden by themes) */
       --bg:#f6f7f8;
       --panel:#ffffff;
       --back:#ffffff;
@@ -40,85 +32,32 @@
       --dot-to:#2563eb;
     }
 
-    /* ========================= THEMES ========================= */
-
-    /* Light */
     html[data-theme="light"]{
       color-scheme: light;
-      --bg:#f6f7f8;
-      --panel:#ffffff;
-      --back:#ffffff;
-      --text:#1f2937;
-      --muted:#6b7280;
-      --link:#2563eb;
-      --border:#e5e7eb;
-      --gold:#f59e0b;
-      --chip-text:#0f172a;
-      --dot-from:#93c5fd;
-      --dot-to:#2563eb;
+      --bg:#f6f7f8; --panel:#ffffff; --back:#ffffff; --text:#1f2937; --muted:#6b7280;
+      --link:#2563eb; --border:#e5e7eb; --gold:#f59e0b; --chip-text:#0f172a;
+      --dot-from:#93c5fd; --dot-to:#2563eb;
     }
-
-    /* Dark */
     html[data-theme="dark"]{
       color-scheme: dark;
-      --bg:#0b1220;
-      --panel:#0f172a;
-      --back:#111827;
-      --text:#e5e7eb;
-      --muted:#9ca3af;
-      --link:#93c5fd;
-      --border:#1f2937;
-      --gold:#f59e0b;
-      --chip-text:#e5e7eb;
-      --dot-from:#fde68a;
-      --dot-to:#f59e0b;
-      --shadow:0 12px 28px rgba(0,0,0,.45);
+      --bg:#0b1220; --panel:#0f172a; --back:#111827; --text:#e5e7eb; --muted:#9ca3af;
+      --link:#93c5fd; --border:#1f2937; --gold:#f59e0b; --chip-text:#e5e7eb;
+      --dot-from:#fde68a; --dot-to:#f59e0b; --shadow:0 12px 28px rgba(0,0,0,.45);
     }
-
-    /* Improved BLUE theme */
     html[data-theme="blue"]{
-      --bg:#F3F6FF;
-      --panel:#FFFFFF;
-      --back:#FFFFFF;
-      --text:#0B1220;
-      --muted:#475569;
-      --link:#1E40AF;
-      --border:#D6E3FF;
-      --gold:#2563EB;
-      --chip-text:#0B1220;
-      --dot-from:#93C5FD;
-      --dot-to:#1E3A8A;
-      --shadow:0 12px 28px rgba(20, 32, 85, .12);
+      --bg:#F3F6FF; --panel:#FFFFFF; --back:#FFFFFF; --text:#0B1220; --muted:#475569;
+      --link:#1E40AF; --border:#D6E3FF; --gold:#2563EB; --chip-text:#0B1220;
+      --dot-from:#93C5FD; --dot-to:#1E3A8A; --shadow:0 12px 28px rgba(20,32,85,.12);
     }
-
-    /* Green (jungle vibe) */
     html[data-theme="green"]{
-      --bg:#E9F4EC;
-      --panel:#F6F5F0;
-      --back:#ffffff;
-      --text:#12281C;
-      --muted:#2E8B57;
-      --link:#E5A23D;
-      --border:#cfe5d6;
-      --gold:#E5A23D;
-      --chip-text:#0b3a2b;
-      --dot-from:#E5A23D;
-      --dot-to:#b7791f;
+      --bg:#E9F4EC; --panel:#F6F5F0; --back:#ffffff; --text:#12281C; --muted:#2E8B57;
+      --link:#E5A23D; --border:#cfe5d6; --gold:#E5A23D; --chip-text:#0b3a2b;
+      --dot-from:#E5A23D; --dot-to:#b7791f;
     }
-
-    /* Orange */
     html[data-theme="orange"]{
-      --bg:#FFF7ED;
-      --panel:#ffffff;
-      --back:#ffffff;
-      --text:#1f2937;
-      --muted:#b45309;
-      --link:#ea580c;
-      --border:#fed7aa;
-      --gold:#f97316;
-      --chip-text:#7c2d12;
-      --dot-from:#fbbf24;
-      --dot-to:#f97316;
+      --bg:#FFF7ED; --panel:#ffffff; --back:#ffffff; --text:#1f2937; --muted:#b45309;
+      --link:#ea580c; --border:#fed7aa; --gold:#f97316; --chip-text:#7c2d12;
+      --dot-from:#fbbf24; --dot-to:#f97316;
     }
 
     *{box-sizing:border-box}
@@ -128,7 +67,6 @@
     a{color:var(--link); text-decoration:none}
     a:hover{text-decoration:underline}
 
-    /* Top nav */
     .topnav{position:sticky; top:0; z-index:100; background:rgba(255,255,255,.92); backdrop-filter:saturate(120%) blur(8px); border-bottom:1px solid var(--border)}
     html[data-theme="dark"] .topnav{background:rgba(15,23,42,.7)}
     .topnav-inner{max-width:1200px; margin:0 auto; padding:12px 16px; display:flex; align-items:center; gap:12px; justify-content:space-between}
@@ -136,14 +74,12 @@
     .tabs::-webkit-scrollbar{display:none}
     .tabs a{white-space:nowrap; padding:8px 14px; border:1px solid var(--border); border-radius:10px; background:var(--back); font-size:14px; color:var(--text); transition:all .18s ease}
 
-    /* Cute dots control */
     .theme-dots{display:flex; align-items:center; gap:10px}
     .theme-dot{width:14px; height:14px; border-radius:50%; cursor:pointer; border:2px solid rgba(255,255,255,.9); box-shadow:0 2px 6px rgba(0,0,0,.15); transition:transform .15s ease, box-shadow .2s ease}
     .theme-dot:hover{transform:scale(1.15)}
     .theme-dot:focus-visible{outline:2px solid var(--link); outline-offset:2px}
     .theme-dot.active{box-shadow:0 0 0 3px color-mix(in srgb, var(--link) 50%, transparent)}
 
-    /* Layout */
     .wrapper{display:grid; grid-template-columns:320px 1fr; gap:28px; max-width:1200px; margin:28px auto 64px; padding:0 16px}
     .sidebar{position:sticky; top:76px; height:fit-content; background:var(--panel); border:1px solid var(--border); border-radius:var(--radius-3); box-shadow:var(--shadow); padding:22px}
     .profile{display:flex; align-items:center; gap:14px}
@@ -162,7 +98,6 @@
     .section-title .dot{width:8px;height:8px;border-radius:50%;background:radial-gradient(circle at 35% 35%, var(--dot-from), var(--dot-to));}
     p{margin:10px 0}
 
-    /* Publications */
     .pub{padding:16px; border:1px solid var(--border); border-radius:var(--radius-2); background:var(--back)}
     .pub + .pub{margin-top:12px}
     .pub-title{font-weight:600; font-size:16px}
@@ -171,7 +106,6 @@
     .me{color:inherit; text-decoration:underline; text-decoration-thickness:2px; text-underline-offset:3px}
     .links-row{margin-top:6px; font-size:14px}
 
-    /* Experience/Teaching grid */
     .grid-2{display:grid; grid-template-columns:1fr 1fr; gap:16px}
     .exp-item{padding:12px 14px; border-radius:var(--radius-2); border:1px solid var(--border); background:var(--back)}
     .exp-top{display:flex; justify-content:space-between; align-items:center; gap:8px}
@@ -181,7 +115,6 @@
 
     footer{max-width:1200px; margin:24px auto 36px; padding:0 16px; color:var(--muted); font-size:12px; text-align:center}
 
-    /* Responsive */
     @media (max-width: 900px){ .wrapper{grid-template-columns:1fr; gap:18px} .sidebar{position:static} }
     @media (max-width: 640px){
       .topnav-inner{flex-wrap:wrap}
@@ -192,29 +125,23 @@
       h1{font-size:20px}
     }
 
-    /* News */
     .news-list{list-style:none;margin:0;padding:0}
     .news-item{padding:10px 12px;border:1px solid var(--border);background:var(--back);border-radius:var(--radius-2);margin-top:10px}
     .news-item:first-child{margin-top:0}
     .news-date{display:inline-block;font-weight:600;color:var(--muted);margin-right:8px}
     .news-badge{display:inline-block;background:color-mix(in srgb, var(--gold) 22%, var(--back) 78%);border:1px solid var(--gold);padding:2px 6px;border-radius:999px;font-size:12px;margin-left:6px;color:var(--chip-text)}
 
-    /* Gradient name styling */
     .grad-name{
       background-image: linear-gradient(90deg, var(--name-grad-from), var(--name-grad-to));
       -webkit-background-clip:text; background-clip:text; color:transparent;
     }
-
-    /* Theme-specific gradients for name */
     html[data-theme="light"], html[data-theme="blue"]{ --name-grad-from:#6366F1; --name-grad-to:#22D3EE; }
     html[data-theme="green"]{ --name-grad-from:#2E8B57; --name-grad-to:#E5A23D; }
     html[data-theme="orange"]{ --name-grad-from:#F59E0B; --name-grad-to:#FB7185; }
     html[data-theme="dark"]{ --name-grad-from:#60A5FA; --name-grad-to:#A78BFA; }
 
-    /* Smoothen theme transitions */
     body, .card, .sidebar, .tabs a, .exp-item, .pub{ transition: background-color .25s, color .25s, border-color .25s; }
 
-    /* Contact FAB */
     .cta-fab{
       position:fixed; right:22px; bottom:22px; z-index:2000; border:none; cursor:pointer;
       background:linear-gradient(135deg, var(--sky), var(--tangerine)); color:white; font-weight:700;
@@ -226,16 +153,17 @@
     .cta-fab i{font-size:18px}
 
     /* ===== Off-duty bio (flip card) ===== */
-    .flip{perspective:1200px; overflow:hidden}
-    .flip-inner{position:relative; transition:transform .7s cubic-bezier(.4,.2,.2,1); transform-style:preserve-3d; min-height:100%}
+    .flip{perspective:1200px}
+    .flip-inner{position:relative; display:grid; transition:transform .7s cubic-bezier(.4,.2,.2,1); transform-style:preserve-3d}
     .flip.is-flipped .flip-inner{transform:rotateY(180deg)}
-    .flip-face{backface-visibility:hidden; -webkit-backface-visibility:hidden; width:100%}
-    .flip-back{position:absolute; inset:0; transform:rotateY(180deg); overflow:auto; display:flex; flex-direction:column}
+    .flip-face{grid-area:1/1; backface-visibility:hidden; -webkit-backface-visibility:hidden}
+    .flip-back{position:absolute; inset:0; transform:rotateY(180deg); display:flex; flex-direction:column}
+    .flip.is-flipped .flip-back{position:relative; inset:auto}
+    .flip.is-flipped .flip-front{position:absolute; inset:0; overflow:hidden}
     .flip-back p{font-size:14px; margin:8px 0}
     .flip-back .where{font-size:12px; color:var(--muted); letter-spacing:.04em; text-transform:uppercase; margin:0 0 4px}
     .flip-back .rain-note{margin-top:auto; font-size:12px; color:var(--muted); font-style:italic}
 
-    /* Rain-cloud toggle */
     .cloud-btn{margin-top:14px; display:inline-flex; align-items:center; gap:8px; border:1px dashed var(--border); background:transparent; color:var(--muted); font:inherit; font-size:13px; padding:6px 12px; border-radius:999px; cursor:pointer; transition:border-color .2s, color .2s, transform .15s}
     .cloud-btn:hover{border-color:var(--link); color:var(--text); transform:translateY(-1px)}
     .cloud-btn .cloud{position:relative; display:inline-block; width:20px; height:14px}
@@ -244,25 +172,72 @@
     .cloud-btn .cloud::before{content:""; position:absolute; left:12px; top:14px; width:2px; height:5px; border-radius:2px; background:var(--link); opacity:0; animation:drip 1.4s .6s infinite}
     @keyframes drip{0%{transform:translateY(-2px);opacity:0}30%{opacity:.9}100%{transform:translateY(8px);opacity:0}}
 
-    /* Raindrops while flipped */
     .rain{pointer-events:none; position:absolute; inset:0; overflow:hidden; border-radius:var(--radius-3); opacity:0; transition:opacity .5s}
     .flip.is-flipped .rain{opacity:1}
     .rain span{position:absolute; top:-12px; width:1.5px; height:14px; border-radius:2px; background:linear-gradient(var(--link), transparent); opacity:.45; animation:fall linear infinite}
     @keyframes fall{to{transform:translateY(420px)}}
 
-    /* Wiggly plant */
     .plant{display:inline-block; transform-origin:50% 100%; animation:sway 3s ease-in-out infinite; cursor:grab}
     .plant:hover{animation-duration:.6s}
     @keyframes sway{0%,100%{transform:rotate(-6deg)}50%{transform:rotate(6deg)}}
 
-    /* Respect reduced motion */
+    /* ===== Background playground: cat & yarn ===== */
+    #playground{position:fixed; inset:0; z-index:0; pointer-events:none; overflow:hidden}
+    #playground svg{position:absolute; left:0; top:0; width:100%; height:100%}
+    .wrapper, footer{position:relative; z-index:1}
+    .cat-sprite .leg{transform-origin:50% 0}
+    .cat-sprite.running .leg.a{animation:trot .28s ease-in-out infinite}
+    .cat-sprite.running .leg.b{animation:trot .28s ease-in-out -.14s infinite}
+    .cat-sprite .tail{transform-origin:0 50%; animation:wag 1.6s ease-in-out infinite}
+    .cat-sprite.running .tail{animation-duration:.5s}
+    @keyframes trot{0%,100%{transform:rotate(-14deg)}50%{transform:rotate(14deg)}}
+    @keyframes wag{0%,100%{transform:rotate(-9deg)}50%{transform:rotate(11deg)}}
+    @media (max-width: 900px){ #playground{display:none} }
+
     @media (prefers-reduced-motion: reduce){
       *, *::before, *::after{ transition:none !important; animation:none !important; }
-      .flip-inner{transition:none !important}
+      #playground{display:none}
     }
   </style>
 </head>
 <body>
+
+  <!-- Background playground: cat chases yarn. Click empty space to move the yarn. -->
+  <div id="playground" aria-hidden="true">
+    <svg id="pg-svg" xmlns="http://www.w3.org/2000/svg">
+      <path id="thread" fill="none" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" opacity=".7"/>
+      <g id="yarn">
+        <circle r="13" fill="var(--gold)"/>
+        <path d="M-11 -6 Q0 -2 11 -6 M-12 2 Q0 6 12 2 M-8 -11 Q-2 0 -8 10 M6 -11 Q2 0 7 10" fill="none" stroke="rgba(255,255,255,.7)" stroke-width="1.5" stroke-linecap="round"/>
+      </g>
+      <g id="cat" class="cat-sprite">
+        <g id="cat-body">
+          <!-- softer, more natural silhouette -->
+          <path class="tail" d="M-25 0 C-39 0 -43 -12 -38 -20 C-35 -25 -29 -27 -25 -23" fill="none" stroke="var(--muted)" stroke-width="4.5" stroke-linecap="round"/>
+
+          <!-- body -->
+          <ellipse cx="0" cy="0" rx="25" ry="12" fill="var(--muted)"/>
+
+          <!-- legs, tucked slightly under the body -->
+          <g transform="translate(-13,7)"><rect class="leg a" x="-2.6" y="0" width="5.2" height="13" rx="2.6" fill="var(--muted)"/></g>
+          <g transform="translate(-4,8)"><rect class="leg b" x="-2.6" y="0" width="5.2" height="12" rx="2.6" fill="var(--muted)"/></g>
+          <g transform="translate(10,8)"><rect class="leg a" x="-2.6" y="0" width="5.2" height="12" rx="2.6" fill="var(--muted)"/></g>
+          <g transform="translate(18,7)"><rect class="leg b" x="-2.6" y="0" width="5.2" height="13" rx="2.6" fill="var(--muted)"/></g>
+
+          <!-- neck + head -->
+          <ellipse cx="21" cy="-5" rx="9" ry="10" fill="var(--muted)"/>
+          <g transform="translate(27,-11)">
+            <circle r="11" fill="var(--muted)"/>
+            <path d="M-9 -6 L-7 -17 L-1 -9 Z M9 -6 L7 -17 L1 -9 Z" fill="var(--muted)"/>
+            <circle cx="-3.8" cy="-1" r="1.4" fill="var(--bg)"/>
+            <circle cx="3.8" cy="-1" r="1.4" fill="var(--bg)"/>
+            <path d="M-1.5 3.2 L0 4.5 L1.5 3.2" fill="none" stroke="var(--bg)" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M-2.5 5.3 Q0 7 2.5 5.3" fill="none" stroke="var(--bg)" stroke-width=".9" stroke-linecap="round"/>
+          </g>
+        </g>
+      </g>
+    </svg>
+  </div>
   <header class="topnav">
     <div class="topnav-inner">
       <nav class="tabs" aria-label="Primary">
@@ -271,8 +246,6 @@
         <a href="#experience">Experience</a>
         <a href="#teaching">Teaching</a>
       </nav>
-
-      <!-- Cute theme dots -->
       <div class="theme-dots" role="group" aria-label="Theme">
         <button class="theme-dot" data-theme="light" style="background:#93c5fd" title="Light" aria-label="Light"></button>
         <button class="theme-dot" data-theme="dark" style="background:#191970" title="Dark" aria-label="Dark"></button>
@@ -284,11 +257,9 @@
   </header>
 
   <main class="wrapper">
-    <!-- Sidebar (flip card) -->
     <aside class="sidebar flip" id="sidebar">
       <div class="flip-inner">
 
-        <!-- FRONT: professional -->
         <div class="flip-face flip-front">
           <div class="profile">
             <img class="avatar" src="images/profpic.jpeg" alt="Sepidehsadat Hosseini" />
@@ -308,7 +279,7 @@
           <div class="links" aria-label="Social links">
             <a href="mailto:sepidhosseini1908@gmail.com" title="Email"><i class="bi bi-envelope"></i></a>
             <a href="https://www.linkedin.com/in/sepidh/" title="LinkedIn"><i class="bi bi-linkedin"></i></a>
-            <a href="https://scholar.google.com/citations?user=G0OoPZAAAAAJ&hl=en" title="Google Scholar"><i class="ai ai-google-scholar"></i></a>
+            <a href="https://scholar.google.com/citations?user=G0OoPZAAAAAJ&amp;hl=en" title="Google Scholar"><i class="ai ai-google-scholar"></i></a>
             <a href="https://github.com/sepidsh" title="GitHub"><i class="bi bi-github"></i></a>
             <a href="https://sepidsh.github.io/Sepidehsadat_Sepid__HOSSEINI_CV.pdf" title="CV (PDF)">CV</a>
           </div>
@@ -320,10 +291,9 @@
           </button>
         </div>
 
-        <!-- BACK: off-duty -->
         <div class="flip-face flip-back" id="offduty">
           <div class="rain" aria-hidden="true"></div>
-          <p>I grew up by the sea in Anzali, a small city in Iran where it rains a lot. I moved to Korea right after high school, stayed long enough for rice, kimchi and a fried egg to remain my favourite comfort food, and eventually moved to Vancouver, apparently I have a thing for rainy cities.</p>
+          <p>I grew up by the sea in Anzali, a small city in Iran where it rains a lot. I moved to Korea right after high school, stayed long enough for rice, kimchi and a fried egg to remain my favourite comfort food, and eventually moved to Vancouver—apparently I have a thing for rainy cities.</p>
           <p>I now have several places I can call home and, somehow, no home at all.</p>
           <p>I own an unreasonable number of plants <span class="plant" title="it's fine, it's fine">🪴</span>, take unnecessarily long walks, and have approximately 4,000 photos of light hitting buildings, trees, windows, and other things nobody asked me to photograph.</p>
           <p>During the day, I spend my time convincing very large models to make slightly fewer bad decisions. The models occasionally listen to me. The plants mostly don’t.</p>
@@ -336,9 +306,7 @@
       </div>
     </aside>
 
-    <!-- Main Content -->
     <section class="main">
-      <!-- About -->
       <section class="card" id="about">
         <h2 class="section-title"><span class="dot"></span>About</h2>
         <p>I am a Senior Machine Learning Researcher at <a href="https://www.borealisai.com/">RBC Borealis</a>.
@@ -349,26 +317,12 @@
         <p>My research interests include computer vision, geometric deep learning, anomaly detection, and time series forecasting.</p>
       </section>
 
-      <!-- News -->
       <section class="card" id="news">
         <h2 class="section-title"><span class="dot"></span>News</h2>
         <ul class="news-list">
-          <li class="news-item">
-            <span class="news-date">Aug 2026</span>
-            <em>FairNVT: Fair Classification via Noise Injection in Vision Transformers</em>
-            accepted to <strong>Transactions on Machine Learning Research (TMLR)</strong>.
-          </li>
-          <li class="news-item">
-            <span class="news-date">Mar 2026</span>
-            <em>FairNVT: Fair Classification via Noise Injection in Vision Transformers</em>
-            accepted as a poster at <strong>Algorithmic Fairness Across Alignment Procedures and Agentic Systems workshop @ ICLR 2026</strong>.
-          </li>
-          <li class="news-item">
-            <span class="news-date">Jan 2026</span>
-            Lead Organizer and Program Chair of the workshop
-            <em><a href="https://sites.google.com/view/iclr-2026-workshop-cao/" target="_blank" rel="noopener">Catch, Adapt, and Operate: Monitoring ML Models Under Drift</a></em>
-            at ICLR 2026, Rio de Janeiro, Brazil.
-          </li>
+          <li class="news-item"><span class="news-date">Aug 2026</span> <em>FairNVT: Fair Classification via Noise Injection in Vision Transformers</em> accepted to <strong>Transactions on Machine Learning Research (TMLR)</strong>.</li>
+          <li class="news-item"><span class="news-date">Mar 2026</span> <em>FairNVT: Fair Classification via Noise Injection in Vision Transformers</em> accepted as a poster at <strong>Algorithmic Fairness Across Alignment Procedures and Agentic Systems workshop @ ICLR 2026</strong>.</li>
+          <li class="news-item"><span class="news-date">Jan 2026</span> Lead Organizer and Program Chair of the workshop <em><a href="https://sites.google.com/view/iclr-2026-workshop-cao/" target="_blank" rel="noopener">Catch, Adapt, and Operate: Monitoring ML Models Under Drift</a></em> at ICLR 2026, Rio de Janeiro, Brazil.</li>
           <li class="news-item"><span class="news-date">July 2025</span> Participated as a <strong>panelist</strong> in <em>co&amp;co x Vector Institute, AI Career Compass: Navigating Career Paths from Opportunities to Understanding Your Market Value</em>.</li>
           <li class="news-item"><span class="news-date">Jun 2025</span> <em>Scalable Temporal Domain Generalization via Prompting</em> accepted to ICML 2025, Workshop of Test-Time Adaptation.</li>
           <li class="news-item"><span class="news-date">Jan 2025</span> <em>Radar: Fast Long-Context Decoding for Any Transformer</em> accepted to ICLR 2025.</li>
@@ -377,7 +331,6 @@
         </ul>
       </section>
 
-      <!-- Experience -->
       <section class="card" id="experience">
         <h2 class="section-title"><span class="dot"></span>Work Experience</h2>
         <div class="grid-2">
@@ -388,7 +341,6 @@
         </div>
       </section>
 
-      <!-- Publications -->
       <section class="card" id="publications">
         <h2 class="section-title"><span class="dot"></span>Selected Publications</h2>
 
@@ -398,63 +350,54 @@
           <div class="authors">Qiaoyue Tang, <span class="me">Sepidehsadat Hosseini</span>, Mengyao Zhai, Thibaut Durand, Greg Mori</div>
           <div class="links-row">Links: <a href="https://openreview.net/pdf?id=rzm6gZrYgl">Paper</a></div>
         </div>
-
         <div class="pub">
           <div class="pub-title">Scalable Temporal Domain Generalization via Prompting</div>
           <div class="venue">ICML 2025, Workshop of Test-Time Adaptation</div>
           <div class="authors"><span class="me">Sepidehsadat Hosseini</span>, Mengyao Zhai, Hossein Hajimirsadeghi, Frederick Tung</div>
           <div class="links-row">Links: <a href="https://arxiv.org/abs/2310.02473">Paper</a></div>
         </div>
-
         <div class="pub">
           <div class="pub-title">Radar: Fast Long-Context Decoding for Any Transformer</div>
           <div class="venue">ICLR 2025</div>
           <div class="authors">Yongchang Hao, Mengyao Zhai, Hossein Hajimirsadeghi, <span class="me">Sepidehsadat Hosseini</span>, Frederick Tung</div>
           <div class="links-row">Links: <a href="https://arxiv.org/abs/2503.10571">Paper</a> · <a href="https://github.com/BorealisAI/radar-decoding">Code</a></div>
         </div>
-
         <div class="pub">
           <div class="pub-title">PuzzleFusion: Unleashing the Power of Diffusion Models for Spatial Puzzle Solving</div>
           <div class="venue">NeurIPS 2023 · Spotlight</div>
           <div class="authors"><span class="me">Sepidehsadat Hosseini</span>, Mohammad Amin Shabani, Saghar Irandoust, Yasutaka Furukawa</div>
           <div class="links-row">Links: <a href="https://sepidsh.github.io/puzzlefusion/">Project</a> · <a href="https://arxiv.org/pdf/2211.13785.pdf">Paper</a> · <a href="https://github.com/sepidsh/PuzzleFussion">Code</a></div>
         </div>
-
         <div class="pub">
           <div class="pub-title">Floorplan Restoration by Structure Hallucinating Transformer Cascades</div>
           <div class="venue">BMVC 2023</div>
           <div class="authors"><span class="me">Sepidehsadat Hosseini</span>, Yasutaka Furukawa</div>
           <div class="links-row">Links: <a href="https://sepidsh.github.io/floorplan_restore/">Project</a> · <a href="https://arxiv.org/pdf/2206.00645.pdf">Paper</a></div>
         </div>
-
         <div class="pub">
           <div class="pub-title">HouseDiffusion: Vector Floorplan Generation via a Diffusion Model with Discrete and Continuous Denoising</div>
           <div class="venue">CVPR 2023</div>
           <div class="authors">Mohammad Amin Shabani, <span class="me">Sepidehsadat Hosseini</span>, Yasutaka Furukawa</div>
           <div class="links-row">Links: <a href="https://aminshabani.github.io/housediffusion/">Project</a> · <a href="https://arxiv.org/pdf/2211.13287.pdf">Paper</a> · <a href="https://github.com/aminshabani/house_diffusion">Code</a></div>
         </div>
-
         <div class="pub">
           <div class="pub-title">House-GAN++: Generative Adversarial Layout Refinement Network</div>
           <div class="venue">CVPR 2021</div>
           <div class="authors">Nelson Nauata, <span class="me">Sepidehsadat Hosseini</span>, Kai-Hung Chang, Hang Chu, Chin-Yi Cheng, Yasutaka Furukawa</div>
           <div class="links-row">Links: <a href="https://ennauata.github.io/houseganpp/page.html">Project</a> · <a href="https://arxiv.org/abs/2103.02574">Paper</a></div>
         </div>
-
         <div class="pub">
           <div class="pub-title">GF-CapsNet: Using Gabor Jet and Capsule Networks for Facial Age, Gender, and Expression Recognition</div>
           <div class="venue">FG 2019</div>
           <div class="authors"><span class="me">Sepidehsadat Hosseini</span>, Nam Ik Cho</div>
           <div class="links-row">Links: <a href="https://ieeexplore.ieee.org/document/8756552">Paper</a></div>
         </div>
-
         <div class="pub">
           <div class="pub-title">Deep Multi-Dataset Multi-Domain Multi-Task Frameworks for Facial Expression Recognition, Age and Gender Estimation</div>
           <div class="venue">Master’s Thesis Summary, 2019</div>
           <div class="authors"><span class="me">Sepidehsadat Hosseini</span>, Nam Ik Cho</div>
           <div class="links-row">Links: <a href="https://arxiv.org/abs/1907.03402">Paper</a></div>
         </div>
-
         <div class="pub">
           <div class="pub-title">Multiple Face Tracking in the Wild Using Color Histogram Features</div>
           <div class="venue">ISSPIT 2017</div>
@@ -463,7 +406,6 @@
         </div>
       </section>
 
-      <!-- Teaching -->
       <section class="card" id="teaching">
         <h2 class="section-title"><span class="dot"></span>Teaching Experience</h2>
         <div class="grid-2">
@@ -477,45 +419,28 @@
     </section>
   </main>
 
-  <!-- Contact me floating button -->
   <a href="mailto:sepidhosseini1908@gmail.com" class="cta-fab" aria-label="Contact me via email">
     <i class="bi bi-envelope-fill" aria-hidden="true"></i>
     Contact me
   </a>
 
-  <footer>
-    © <span id="year"></span> Sepidehsadat Hosseini
-  </footer>
+  <footer>© <span id="year"></span> Sepidehsadat Hosseini</footer>
 
   <script>
     const THEME_KEY = 'site-theme';
     const dots = document.querySelectorAll('.theme-dot');
-
     function saveTheme(v){ try{ localStorage.setItem(THEME_KEY, v); }catch(e){} }
     function loadTheme(){ try{ return localStorage.getItem(THEME_KEY); }catch(e){ return null; } }
-
-    function setActiveDot(theme){
-      dots.forEach(d=>d.classList.toggle('active', d.dataset.theme === theme));
-    }
-
+    function setActiveDot(theme){ dots.forEach(d=>d.classList.toggle('active', d.dataset.theme === theme)); }
     function applyTheme(theme){
       document.documentElement.setAttribute('data-theme', theme);
       saveTheme(theme);
       setActiveDot(theme);
     }
+    applyTheme(loadTheme() || 'blue');
+    dots.forEach(dot=>{ dot.addEventListener('click', ()=> applyTheme(dot.dataset.theme)); });
 
-    // Init
-    (function initTheme(){
-      const saved = loadTheme();
-      applyTheme(saved || 'blue');
-    })();
-
-    // Listen to dot clicks
-    dots.forEach(dot=>{
-      dot.addEventListener('click', ()=> applyTheme(dot.dataset.theme));
-    });
-
-    // ===== Off-duty flip =====
+    // Off-duty flip
     const sidebar = document.getElementById('sidebar');
     const rainBox = sidebar.querySelector('.rain');
     for (let i = 0; i < 18; i++) {
@@ -532,7 +457,67 @@
       });
     });
 
-    // Year
+
+    // ===== Cat & yarn playground =====
+    (function(){
+      const pg = document.getElementById('playground');
+      if (!pg || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      const cat = document.getElementById('cat'), yarn = document.getElementById('yarn'), thread = document.getElementById('thread');
+      const W = () => window.innerWidth, H = () => window.innerHeight;
+      let yx = W()*0.82, yy = H()*0.8, yrot = 0;
+      let cx = 80, cy = H()*0.8, dir = 1, settledT = 0;
+      const trail = [];
+
+      const wrap = document.querySelector('.wrapper');
+      function margins(){ const r = wrap.getBoundingClientRect(); return {l:r.left, r:r.right}; }
+      function fits(){ return margins().l >= 90; }
+      function snapX(x){
+        const m = margins();
+        if (x > m.l - 30 && x < m.r + 30) x = (x - m.l < m.r - x) ? m.l - 50 : m.r + 50;
+        return Math.max(24, Math.min(W()-24, x));
+      }
+      function moveYarn(x, y){
+        yx = snapX(x);
+        yy = Math.max(70, Math.min(H()-30, y));
+        settledT = 0;
+      }
+      function place(){ pg.style.display = fits() ? '' : 'none'; yx = snapX(yx); cx = snapX(cx); }
+      window.addEventListener('resize', place);
+      yx = W()-60; cx = 60; place();
+      document.addEventListener('click', e => {
+        if (e.target.closest('a, button, input, textarea, select, label')) return;
+        moveYarn(e.clientX, e.clientY);
+      });
+
+      let last = performance.now();
+      function tick(now){
+        const dt = Math.min(0.05, (now - last)/1000); last = now;
+        const dx = yx - cx, dy = yy - cy, dist = Math.hypot(dx, dy);
+        const running = dist > 34;
+        if (running){
+          const speed = 260;
+          cx += dx/dist * speed * dt; cy += dy/dist * speed * dt;
+          dir = dx >= 0 ? 1 : -1;
+        } else {
+          settledT += dt;
+          // cat bats the yarn now and then; it rolls away a little
+          if (settledT > 6 + Math.random()*6){
+            const a = Math.random()*Math.PI*2, r = 90 + Math.random()*160;
+            moveYarn(yx + Math.cos(a)*r, yy + Math.sin(a)*r);
+          }
+        }
+        cat.classList.toggle('running', running);
+        // yarn rolls toward where it is (rotate based on travel)
+        trail.push([yx, yy]); if (trail.length > 40) trail.shift();
+        const p = trail[trail.length-2]; if (p){ yrot += Math.hypot(yx-p[0], yy-p[1]) * 2; }
+        yarn.setAttribute('transform', `translate(${yx},${yy}) rotate(${yrot})`);
+        thread.setAttribute('d', trail.map((t,i)=> (i?'L':'M') + t[0].toFixed(1) + ' ' + t[1].toFixed(1)).join(' '));
+        cat.setAttribute('transform', `translate(${cx},${cy}) scale(${dir},1)`);
+        requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    })();
+
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 </body>
