@@ -131,6 +131,13 @@
       h1{font-size:20px}
     }
 
+    /* Scrollable panels for News & Publications */
+    .scrollbox{max-height:430px; overflow-y:auto; padding-right:10px; scrollbar-width:thin; scrollbar-color:color-mix(in srgb, var(--link) 45%, transparent) transparent}
+    .scrollbox.tall{max-height:560px}
+    .scrollbox::-webkit-scrollbar{width:8px}
+    .scrollbox::-webkit-scrollbar-track{background:transparent}
+    .scrollbox::-webkit-scrollbar-thumb{background:color-mix(in srgb, var(--link) 40%, transparent); border-radius:99px}
+    .scrollbox::-webkit-scrollbar-thumb:hover{background:color-mix(in srgb, var(--link) 65%, transparent)}
     .news-list{list-style:none;margin:0;padding:0}
     .news-item{padding:10px 12px;border:1px solid var(--border);background:var(--back);border-radius:var(--radius-2);margin-top:10px}
     .news-item:first-child{margin-top:0}
@@ -366,6 +373,7 @@
 
       <section class="card" id="news">
         <h2 class="section-title"><span class="dot"></span>News</h2>
+        <div class="scrollbox">
         <ul class="news-list">
           <li class="news-item"><span class="news-date">Aug 2026</span> <em>FairNVT: Fair Classification via Noise Injection in Vision Transformers</em> accepted to <strong>Transactions on Machine Learning Research (TMLR)</strong>.</li>
           <li class="news-item"><span class="news-date">Mar 2026</span> <em>Improving Fairness via Noise Injection in Vision Transformers</em> accepted as a poster at <strong>Algorithmic Fairness Across Alignment Procedures and Agentic Systems workshop @ ICLR 2026</strong>.</li>
@@ -376,6 +384,7 @@
           <li class="news-item"><span class="news-date">Dec 2023</span> Joined <em>RBC Borealis</em> as Machine Learning Researcher.</li>
           <li class="news-item"><span class="news-date">Sep 2023</span> <em>PuzzleFusion</em> accepted to NeurIPS 2023 (Spotlight!).</li>
         </ul>
+        </div>
       </section>
 
       <section class="card" id="experience">
@@ -391,6 +400,7 @@
 
       <section class="card" id="publications">
         <h2 class="section-title"><span class="dot"></span>Selected Publications</h2>
+        <div class="scrollbox tall">
 
         <div class="pub">
           <div class="pub-title">FairNVT: Fair Classification via Noise Injection in Vision Transformers</div>
@@ -451,6 +461,7 @@
           <div class="venue">ISSPIT 2017</div>
           <div class="authors">Hyuk Jin Kwon, Seok Hee Lee, <span class="me">Sepidehsadat Hosseini</span>, Jaewon Moon, Hyung Il Koo, Nam Ik Cho</div>
           <div class="links-row">Links: <a href="https://ieeexplore.ieee.org/document/8388318">Paper</a></div>
+        </div>
         </div>
       </section>
 
