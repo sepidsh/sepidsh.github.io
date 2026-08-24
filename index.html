@@ -74,6 +74,12 @@
     .tabs::-webkit-scrollbar{display:none}
     .tabs a{white-space:nowrap; padding:8px 14px; border:1px solid var(--border); border-radius:10px; background:var(--back); font-size:14px; color:var(--text); transition:all .18s ease}
 
+    .nav-controls{display:flex; align-items:center; gap:16px}
+    .pet-toggle{display:flex; gap:6px}
+    .pet-btn{width:32px; height:32px; border-radius:10px; border:1px solid var(--border); background:var(--back); cursor:pointer; font-size:17px; line-height:1; display:inline-flex; align-items:center; justify-content:center; padding:0; transition:transform .15s ease, box-shadow .2s ease; filter:grayscale(1); opacity:.6}
+    .pet-btn:hover{transform:scale(1.1)}
+    .pet-btn.active{filter:none; opacity:1; box-shadow:0 0 0 3px color-mix(in srgb, var(--link) 45%, transparent)}
+    .pet-btn:focus-visible{outline:2px solid var(--link); outline-offset:2px}
     .theme-dots{display:flex; align-items:center; gap:10px}
     .theme-dot{width:14px; height:14px; border-radius:50%; cursor:pointer; border:2px solid rgba(255,255,255,.9); box-shadow:0 2px 6px rgba(0,0,0,.15); transition:transform .15s ease, box-shadow .2s ease}
     .theme-dot:hover{transform:scale(1.15)}
@@ -181,7 +187,8 @@
     .plant:hover{animation-duration:.6s}
     @keyframes sway{0%,100%{transform:rotate(-6deg)}50%{transform:rotate(6deg)}}
 
-    /* ===== Bio doodles: sun & coffee ===== */
+
+    /* ===== Bio doodles: window light & coffee ===== */
     .doodle{display:inline-block; vertical-align:-4px; width:22px; height:20px; margin:0 2px}
     .doodle.sun{width:22px; overflow:visible}
     .sun .rays{transform-box:fill-box; transform-origin:50% 50%; animation:spin 14s linear infinite}
@@ -190,13 +197,14 @@
     @keyframes spin{to{transform:rotate(360deg)}}
     @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.12)}}
     @keyframes halo{0%,100%{transform:scale(1);opacity:.25}50%{transform:scale(1.5);opacity:0}}
-    .mug .steam{fill:none; stroke:#A88B7A; stroke-width:1.4; stroke-linecap:round; opacity:0; animation:steam 2.6s ease-in-out infinite; transform-box:fill-box; transform-origin:50% 100%}
+    .mug .steam{fill:none; stroke:#A88B7A; stroke-width:1.4; stroke-linecap:round; opacity:0; animation:steam 2.6s ease-in-out infinite}
     .mug .steam.s2{animation-delay:.8s}
     .mug .steam.s3{animation-delay:1.6s}
     @keyframes steam{0%{transform:translateY(3px) scaleX(1);opacity:0}30%{opacity:.7}100%{transform:translateY(-6px) scaleX(1.25);opacity:0}}
+    .mug .steam{transform-box:fill-box; transform-origin:50% 100%}
     .mug:hover .steam{animation-duration:1.2s}
 
-    /* ===== Playground: cat & yarn (walks over the page, click-through) ===== */
+    /* ===== Background playground: cat & yarn ===== */
     #playground{position:fixed; inset:0; z-index:50; pointer-events:none; overflow:hidden}
     #playground svg{position:absolute; inset:0; width:100%; height:100%; overflow:visible}
     .wrapper, footer{position:relative; z-index:1}
@@ -204,7 +212,7 @@
     #yarn{filter:drop-shadow(0 3px 5px rgba(0,0,0,.10))}
     .cat-sprite{will-change:transform}
     .cat-sprite.walking .cat-body{animation:cat-bob .62s ease-in-out infinite}
-    .cat-sprite .ear-inner{fill:color-mix(in srgb, var(--gold) 42%, white 58%)}
+        .cat-sprite .ear-inner{fill:color-mix(in srgb, var(--gold) 42%, white 58%)}
     .cat-sprite .cheek{fill:color-mix(in srgb, var(--gold) 35%, white 65%); opacity:.55}
     @keyframes cat-bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-1.8px)}}
     /* @media (max-width: 700px){ #playground{display:none} } */
@@ -217,7 +225,6 @@
 </head>
 <body>
 
-  <!-- Playground: the yarn unrolls and the cat follows. Click empty space to move the yarn. -->
   <div id="playground" aria-hidden="true">
     <svg id="pg-svg" xmlns="http://www.w3.org/2000/svg">
       <path id="thread" fill="none" stroke="#E0312E" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" opacity=".55"/>
@@ -248,9 +255,28 @@
           </g>
         </g>
       </g>
+      <g id="dog" class="cat-sprite">
+        <g class="cat-body">
+          <ellipse cx="0" cy="2" rx="24" ry="14" fill="#8B6B4A"/>
+          <ellipse cx="18" cy="-4" rx="11" ry="12" fill="#8B6B4A"/>
+          <g transform="translate(-22,-2)"><path d="M0 0 C-10 -6 -12 -16 -6 -22" fill="none" stroke="#8B6B4A" stroke-width="5.5" stroke-linecap="round"><animateTransform attributeName="transform" type="rotate" values="-14 0 0;16 0 0;-14 0 0" dur="1.1s" repeatCount="indefinite" calcMode="spline" keySplines=".45 0 .55 1;.45 0 .55 1"/></path></g>
+          <g transform="translate(-9,12)"><g id="dpaw1"><rect x="-3" y="0" width="6" height="11" rx="3" fill="#8B6B4A"/></g></g>
+          <g transform="translate(11,12)"><g id="dpaw2"><rect x="-3" y="0" width="6" height="11" rx="3" fill="#8B6B4A"/></g></g>
+          <g transform="translate(27,-12)">
+            <circle r="15" fill="#8B6B4A"/>
+            <path d="M-13 -8 C-19 -2 -18 8 -12 10 C-9 10 -8 2 -9 -6 Z" fill="#6B4E33"/>
+            <path d="M13 -8 C19 -2 18 8 12 10 C9 10 8 2 9 -6 Z" fill="#6B4E33"/>
+            <ellipse cx="0" cy="5" rx="7.5" ry="5.5" fill="#A98868"/>
+            <circle cx="0" cy="2.6" r="2.4" fill="#3E2314"/>
+            <path d="M-6.5 -3 Q-4.2 -1 -1.9 -3" fill="none" stroke="#3E2314" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M1.9 -3 Q4.2 -1 6.5 -3" fill="none" stroke="#3E2314" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M0 5 L0 7.5 Q-2.5 10 -5 8.5 M0 7.5 Q2.5 10 5 8.5" fill="none" stroke="#3E2314" stroke-width="1" stroke-linecap="round"/>
+            <path d="M1 8.6 Q2.2 12 0 13 Q-2 12 -.8 8.8 Z" fill="#E58A9C"/>
+          </g>
+        </g>
+      </g>
     </svg>
   </div>
-
   <header class="topnav">
     <div class="topnav-inner">
       <nav class="tabs" aria-label="Primary">
@@ -259,12 +285,18 @@
         <a href="#experience">Experience</a>
         <!-- <a href="#teaching">Teaching</a> -->
       </nav>
+      <div class="nav-controls">
+      <div class="pet-toggle" role="group" aria-label="Who chases the yarn?">
+        <button class="pet-btn" data-pet="cat" title="Cat chases the yarn" aria-label="Cat">🐱</button>
+        <button class="pet-btn" data-pet="dog" title="Dog chases the yarn" aria-label="Dog">🐶</button>
+      </div>
       <div class="theme-dots" role="group" aria-label="Theme">
         <button class="theme-dot" data-theme="light" style="background:#93c5fd" title="Light" aria-label="Light"></button>
         <button class="theme-dot" data-theme="dark" style="background:#191970" title="Dark" aria-label="Dark"></button>
         <button class="theme-dot" data-theme="blue" style="background:#3b82f6" title="Blue" aria-label="Blue"></button>
         <button class="theme-dot" data-theme="green" style="background:#10b981" title="Green" aria-label="Green"></button>
         <button class="theme-dot" data-theme="orange" style="background:#fb923c" title="Orange" aria-label="Orange"></button>
+      </div>
       </div>
     </div>
   </header>
@@ -349,8 +381,7 @@
         <h2 class="section-title"><span class="dot"></span>Work Experience</h2>
         <div class="grid-2">
           <div class="exp-item"><div class="exp-top"><div class="exp-title">RBC Borealis</div><div class="time">May 2026 – Present</div></div><div class="company">Senior Machine Learning Researcher</div></div>
-              <div class="exp-item"><div class="exp-top"><div class="exp-title">RBC Borealis</div><div class="time">Dec 2023 – May 2026</div></div><div class="company">Machine Learning Researcher</div></div>
-
+          <div class="exp-item"><div class="exp-top"><div class="exp-title">RBC Borealis</div><div class="time">Dec 2023 – May 2026</div></div><div class="company">Machine Learning Researcher</div></div>
           <div class="exp-item"><div class="exp-top"><div class="exp-title">Borealis AI</div><div class="time">Summer 2023</div></div><div class="company">Machine Learning Research Intern</div></div>
           <div class="exp-item"><div class="exp-top"><div class="exp-title">LG Electronics, Intelligent Systems Research Center</div><div class="time">Summer 2017</div></div><div class="company">Research Intern</div></div>
           <div class="exp-item"><div class="exp-top"><div class="exp-title">Samsung Techwin, Software Development Center</div><div class="time">Summer 2015</div></div><div class="company">Software Engineer Intern</div></div>
@@ -422,7 +453,8 @@
         </div>
       </section>
 
-      <!-- <section class="card" id="teaching">
+      <!--
+      <section class="card" id="teaching">
         <h2 class="section-title"><span class="dot"></span>Teaching Experience</h2>
         <div class="grid-2">
           <div class="exp-item"><div class="exp-top"><div class="exp-title">CMPT 412 Computational Vision</div><div class="time">Spring 2023</div></div><div class="company">Teaching Assistant</div></div>
@@ -432,8 +464,9 @@
           <div class="exp-item"><div class="exp-top"><div class="exp-title">CMPT 419 Machine Learning</div><div class="time">Spring 2021</div></div><div class="company">Teaching Assistant</div></div>
         </div>
       </section>
+      -->
     </section>
-  </main> -->
+  </main>
 
   <a href="mailto:sepidhosseini1908@gmail.com" class="cta-fab" aria-label="Contact me via email">
     <i class="bi bi-envelope-fill" aria-hidden="true"></i>
@@ -473,7 +506,10 @@
       });
     });
 
+
     // ===== Cat & yarn playground =====
+    // The yarn chases the mouse cursor. When it catches it and the mouse is idle,
+    // it wanders on its own, picking a new direction whenever it hits an edge.
     (function(){
       const pg = document.getElementById('playground');
       if (!pg || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
@@ -481,32 +517,49 @@
       const yarn = document.getElementById('yarn');
       const thread = document.getElementById('thread');
       const paw1 = document.getElementById('paw1'), paw2 = document.getElementById('paw2');
+      const dog = document.getElementById('dog');
+      const dpaw1 = document.getElementById('dpaw1'), dpaw2 = document.getElementById('dpaw2');
       const W = () => window.innerWidth;
       const H = () => window.innerHeight;
       const strand = [];
-      let yx = W() - 64, yy = H() * .76;
-      let tx = yx, ty = yy;
-      let cx = 64, cy = H() * .76;
+      let yx = 0, yy = 0, cx = 64, cy = 0;
       let dir = 1, yrot = 0, last = performance.now();
-      let nextTargetAt = 0;
+      let mx = null, my = null, lastMouse = -1e9;
+      let mode = 'wander';
+      let wanderA = Math.random() * Math.PI * 2;
 
       const clampX = x => Math.max(40, Math.min(W() - 40, x));
-      function chooseTarget(){
-        tx = 40 + Math.random() * Math.max(1, W() - 80);
-        ty = 90 + Math.random() * Math.max(120, H() - 175);
+      const clampY = y => Math.max(80, Math.min(H() - 38, y));
+
+      // Pet chooser: cat or dog chases the yarn
+      const PET_KEY = 'site-pet';
+      const petBtns = document.querySelectorAll('.pet-btn');
+      let pet = 'cat';
+      try{ if (localStorage.getItem(PET_KEY) === 'dog') pet = 'dog'; }catch(e){}
+      function applyPet(p){
+        pet = p;
+        try{ localStorage.setItem(PET_KEY, p); }catch(e){}
+        cat.style.display = p === 'cat' ? '' : 'none';
+        dog.style.display = p === 'dog' ? '' : 'none';
+        petBtns.forEach(bn => bn.classList.toggle('active', bn.dataset.pet === p));
       }
-      function moveTarget(x, y){
-        tx = clampX(x);
-        ty = Math.max(80, Math.min(H() - 38, y));
-        nextTargetAt = performance.now() + 3600;
-      }
+      applyPet(pet);
+      petBtns.forEach(bn => bn.addEventListener('click', () => applyPet(bn.dataset.pet)));
+      const follower = () => pet === 'cat' ? {el:cat, p1:paw1, p2:paw2} : {el:dog, p1:dpaw1, p2:dpaw2};
+
+      document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; lastMouse = performance.now(); });
+      document.addEventListener('touchstart', e => {
+        const t = e.touches[0];
+        if (t){ mx = t.clientX; my = t.clientY; lastMouse = performance.now(); }
+      }, {passive:true});
+
       function strandPath(points){
         if (points.length < 2) return '';
         let d = `M ${points[0].x.toFixed(1)} ${points[0].y.toFixed(1)}`;
         for (let i = 1; i < points.length - 1; i++) {
           const a = points[i], b = points[i + 1];
-          const mx = (a.x + b.x) / 2, my = (a.y + b.y) / 2;
-          d += ` Q ${a.x.toFixed(1)} ${a.y.toFixed(1)} ${mx.toFixed(1)} ${my.toFixed(1)}`;
+          const mxp = (a.x + b.x) / 2, myp = (a.y + b.y) / 2;
+          d += ` Q ${a.x.toFixed(1)} ${a.y.toFixed(1)} ${mxp.toFixed(1)} ${myp.toFixed(1)}`;
         }
         const p = points[points.length - 1];
         d += ` T ${p.x.toFixed(1)} ${p.y.toFixed(1)}`;
@@ -520,42 +573,84 @@
         }
         while (strand.length > 86) strand.shift();
       }
-      function place(){ yx = clampX(yx); cx = clampX(cx); tx = clampX(tx); }
+      function place(){ yx = clampX(yx); cx = clampX(cx); yy = clampY(yy); cy = clampY(cy); }
 
+      // Card/section borders: the wandering yarn turns when it would cross one.
+      let cardRects = [], rectsAt = -1e9;
+      function refreshRects(now){
+        if (now - rectsAt < 250) return;
+        rectsAt = now;
+        cardRects = [...document.querySelectorAll('.card, .sidebar')].map(el => el.getBoundingClientRect());
+      }
+      const insideAny = (x, y) => cardRects.some(r => x > r.left && x < r.right && y > r.top && y < r.bottom);
+      function crossesCardEdge(x1, y1, x2, y2){
+        return insideAny(x1, y1) !== insideAny(x2, y2);
+      }
       window.addEventListener('resize', place);
-      document.addEventListener('click', e => {
-        if (e.target.closest('a, button, input, textarea, select, label')) return;
-        moveTarget(e.clientX, e.clientY);
-      });
-      chooseTarget();
-      place();
 
       let inited = false;
       function tick(now){
         const dt = Math.min(.04, (now - last) / 1000 || 0);
         last = now;
-        if (!inited){ if (H() < 50){ requestAnimationFrame(tick); return; } inited = true; yy = cy = H() * .76; chooseTarget(); place(); }
-        if (now > nextTargetAt || Math.hypot(tx - yx, ty - yy) < 16) { chooseTarget(); nextTargetAt = now + 3200 + Math.random() * 2600; }
+        if (!inited){
+          if (H() < 50){ requestAnimationFrame(tick); return; }
+          inited = true;
+          yx = clampX(W() - 64); yy = clampY(H() * .76);
+          cx = clampX(64); cy = yy;
+        }
 
-        // yarn rolls toward its target, unspooling a thread behind it
-        const ydx = tx - yx, ydy = ty - yy, ydist = Math.hypot(ydx, ydy);
-        if (ydist > .8) { const step = Math.min(ydist, 52 * dt); yx += ydx / ydist * step; yy += ydy / ydist * step; yrot += step * 5.2; rememberStrand(yx, yy); }
+        refreshRects(now);
+        const mouseActive = mx !== null && (now - lastMouse < 1600);
+        const distToMouse = mx === null ? Infinity : Math.hypot(mx - yx, my - yy);
 
-        // cat follows, keeping a small gap
+        if (mouseActive) mode = 'chase';
+
+        let moved = 0;
+        if (mode === 'chase'){
+          // roll toward the cursor
+          if (distToMouse > 14){
+            const tx = clampX(mx), ty = clampY(my);
+            const dxm = tx - yx, dym = ty - yy, d = Math.hypot(dxm, dym);
+            if (d > .8){ const step = Math.min(d, 85 * dt); yx += dxm / d * step; yy += dym / d * step; moved = step; }
+          } else if (!mouseActive){
+            // caught the cursor and the mouse is resting: start wandering
+            mode = 'wander';
+            wanderA = Math.random() * Math.PI * 2;
+          }
+        } else {
+          // wander: straight lines; turn at screen edges AND at card/section borders
+          const step = 46 * dt;
+          let nx = yx + Math.cos(wanderA) * step, ny = yy + Math.sin(wanderA) * step;
+          let tries = 0;
+          while (tries < 8 && (nx < 40 || nx > W() - 40 || ny < 80 || ny > H() - 38 || crossesCardEdge(yx, yy, nx, ny))){
+            wanderA = Math.random() * Math.PI * 2;
+            if (nx < 40 || nx > W() - 40 || ny < 80 || ny > H() - 38){
+              // at screen edges, bias the new direction back toward the page
+              wanderA = Math.atan2(H() / 2 - yy, W() / 2 - yx) + (Math.random() - .5) * 2.4;
+            }
+            nx = yx + Math.cos(wanderA) * step; ny = yy + Math.sin(wanderA) * step;
+            tries++;
+          }
+          yx = nx; yy = ny; moved = step;
+        }
+        if (moved > 0){ yrot += moved * 5.2; rememberStrand(yx, yy); }
+
+        // the chosen pet follows the yarn, keeping a small gap
+        const f = follower();
         const dx = yx - cx, dy = yy - cy, dist = Math.hypot(dx, dy);
         const followGap = 72;
         const walking = dist > followGap + 6;
         if (walking) { const step = Math.min(dist - followGap, 61 * dt); cx += dx / dist * step; cy += dy / dist * step; dir = dx >= 0 ? 1 : -1; }
-        cat.classList.toggle('walking', walking);
+        f.el.classList.toggle('walking', walking);
 
         const swing = walking ? Math.sin(now / 95) * 9 : 0;
-        paw1.setAttribute('transform', `rotate(${swing.toFixed(1)})`);
-        paw2.setAttribute('transform', `rotate(${(-swing).toFixed(1)})`);
+        f.p1.setAttribute('transform', `rotate(${swing.toFixed(1)})`);
+        f.p2.setAttribute('transform', `rotate(${(-swing).toFixed(1)})`);
 
         const yarnBob = Math.sin(now / 310) * .9;
         yarn.setAttribute('transform', `translate(${yx.toFixed(1)},${(yy + yarnBob).toFixed(1)}) rotate(${yrot.toFixed(1)})`);
         thread.setAttribute('d', strandPath(strand));
-        cat.setAttribute('transform', `translate(${cx.toFixed(1)},${cy.toFixed(1)}) scale(${dir},1)`);
+        f.el.setAttribute('transform', `translate(${cx.toFixed(1)},${cy.toFixed(1)}) scale(${dir},1)`);
         requestAnimationFrame(tick);
       }
       requestAnimationFrame(tick);
