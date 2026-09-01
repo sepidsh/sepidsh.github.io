@@ -211,12 +211,13 @@
     .mug .steam{transform-box:fill-box; transform-origin:50% 100%}
     .mug:hover .steam{animation-duration:1.2s}
 
-    /* ===== Background playground: cat & yarn ===== */
+    /* ===== Background playground: cat & yarn / dog & ball ===== */
     #playground{position:fixed; inset:0; z-index:50; pointer-events:none; overflow:hidden}
     #playground svg{position:absolute; inset:0; width:100%; height:100%; overflow:visible}
     .wrapper, footer{position:relative; z-index:1}
     #thread{filter:drop-shadow(0 1px 1px rgba(0,0,0,.05))}
     #yarn{filter:drop-shadow(0 3px 5px rgba(0,0,0,.10))}
+    #ball{filter:drop-shadow(0 3px 5px rgba(0,0,0,.12))}
     .cat-sprite{will-change:transform}
     .cat-sprite.walking .cat-body{animation:cat-bob .62s ease-in-out infinite}
         .cat-sprite .ear-inner{fill:color-mix(in srgb, var(--gold) 42%, white 58%)}
@@ -239,6 +240,15 @@
         <circle r="14" fill="#E0312E"/>
         <path d="M-11 -7 C-4 -11 5 -10 11 -5 M-13 0 C-5 5 5 5 13 0 M-10 8 C-2 3 4 4 10 8 M-6 -12 C-1 -5 0 4 -5 12 M6 -12 C2 -5 2 5 7 11" fill="none" stroke="rgba(255,255,255,.80)" stroke-width="1.45" stroke-linecap="round"/>
         <circle cx="-4.5" cy="-4.5" r="2.2" fill="rgba(255,255,255,.23)"/>
+      </g>
+      <!-- Tennis ball for the dog: felt-green with the classic white seam -->
+      <g id="ball">
+        <ellipse id="ball-shadow" cx="0" cy="15" rx="10" ry="3" fill="rgba(0,0,0,.14)"/>
+        <g id="ball-body">
+          <circle r="13" fill="#C9E24A"/>
+          <path d="M-9.5 -9 C-2.5 -3 -2.5 3 -9.5 9 M9.5 -9 C2.5 -3 2.5 3 9.5 9" fill="none" stroke="#FFFFFF" stroke-width="2.3" stroke-linecap="round"/>
+          <circle cx="-4.5" cy="-4.5" r="2.4" fill="rgba(255,255,255,.35)"/>
+        </g>
       </g>
       <g id="cat" class="cat-sprite">
         <g class="cat-body">
@@ -294,9 +304,9 @@
         <!-- <a href="#teaching">Teaching</a> -->
       </nav>
       <div class="nav-controls">
-      <div class="pet-toggle" role="group" aria-label="Who chases the yarn?">
+      <div class="pet-toggle" role="group" aria-label="Who plays in the background?">
         <button class="pet-btn" data-pet="cat" title="Cat chases the yarn" aria-label="Cat">🐱</button>
-        <button class="pet-btn" data-pet="dog" title="Dog chases the yarn" aria-label="Dog">🐶</button>
+        <button class="pet-btn" data-pet="dog" title="Dog chases the ball" aria-label="Dog">🐶</button>
       </div>
       <div class="theme-dots" role="group" aria-label="Theme">
         <button class="theme-dot" data-theme="light" style="background:#93c5fd" title="Light" aria-label="Light"></button>
@@ -538,14 +548,19 @@
     });
 
 
-    // ===== Cat & yarn playground =====
-    // The yarn chases the mouse cursor. When it catches it and the mouse is idle,
+    // ===== Playground: cat & yarn, or dog & ball =====
+    // The toy chases the mouse cursor. When it catches it and the mouse is idle,
     // it wanders on its own, picking a new direction whenever it hits an edge.
+    // Cat mode: a yarn ball that unspools a thread behind it.
+    // Dog mode: a tennis ball that bounces along with no thread.
     (function(){
       const pg = document.getElementById('playground');
       if (!pg || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
       const cat = document.getElementById('cat');
       const yarn = document.getElementById('yarn');
+      const ball = document.getElementById('ball');
+      const ballBody = document.getElementById('ball-body');
+      const ballShadow = document.getElementById('ball-shadow');
       const thread = document.getElementById('thread');
       const paw1 = document.getElementById('paw1'), paw2 = document.getElementById('paw2');
       const dog = document.getElementById('dog');
@@ -562,7 +577,7 @@
       const clampX = x => Math.max(40, Math.min(W() - 40, x));
       const clampY = y => Math.max(80, Math.min(H() - 38, y));
 
-      // Pet chooser: cat or dog chases the yarn
+      // Pet chooser: cat chases the yarn, dog chases the ball
       const PET_KEY = 'site-pet';
       const petBtns = document.querySelectorAll('.pet-btn');
       let pet = 'cat';
@@ -570,8 +585,15 @@
       function applyPet(p){
         pet = p;
         try{ localStorage.setItem(PET_KEY, p); }catch(e){}
-        cat.style.display = p === 'cat' ? '' : 'none';
-        dog.style.display = p === 'dog' ? '' : 'none';
+        const isCat = p === 'cat';
+        cat.style.display = isCat ? '' : 'none';
+        dog.style.display = isCat ? 'none' : '';
+        yarn.style.display = isCat ? '' : 'none';
+        thread.style.display = isCat ? '' : 'none';
+        ball.style.display = isCat ? 'none' : '';
+        // drop the old thread so it doesn't reappear stale when switching back
+        strand.length = 0;
+        thread.setAttribute('d', '');
         petBtns.forEach(bn => bn.classList.toggle('active', bn.dataset.pet === p));
       }
       applyPet(pet);
@@ -606,7 +628,7 @@
       }
       function place(){ yx = clampX(yx); cx = clampX(cx); yy = clampY(yy); cy = clampY(cy); }
 
-      // Card/section borders: the wandering yarn turns when it would cross one.
+      // Card/section borders: the wandering toy turns when it would cross one.
       let cardRects = [], rectsAt = -1e9;
       function refreshRects(now){
         if (now - rectsAt < 250) return;
@@ -664,9 +686,12 @@
           }
           yx = nx; yy = ny; moved = step;
         }
-        if (moved > 0){ yrot += moved * 5.2; rememberStrand(yx, yy); }
+        if (moved > 0){
+          yrot += moved * 5.2;
+          if (pet === 'cat') rememberStrand(yx, yy);
+        }
 
-        // the chosen pet follows the yarn, keeping a small gap
+        // the chosen pet follows the toy, keeping a small gap
         const f = follower();
         const dx = yx - cx, dy = yy - cy, dist = Math.hypot(dx, dy);
         const followGap = 72;
@@ -678,9 +703,20 @@
         f.p1.setAttribute('transform', `rotate(${swing.toFixed(1)})`);
         f.p2.setAttribute('transform', `rotate(${(-swing).toFixed(1)})`);
 
-        const yarnBob = Math.sin(now / 310) * .9;
-        yarn.setAttribute('transform', `translate(${yx.toFixed(1)},${(yy + yarnBob).toFixed(1)}) rotate(${yrot.toFixed(1)})`);
-        thread.setAttribute('d', strandPath(strand));
+        if (pet === 'cat'){
+          const yarnBob = Math.sin(now / 310) * .9;
+          yarn.setAttribute('transform', `translate(${yx.toFixed(1)},${(yy + yarnBob).toFixed(1)}) rotate(${yrot.toFixed(1)})`);
+          thread.setAttribute('d', strandPath(strand));
+        } else {
+          // tennis ball: bounces while it moves, settles into a soft bob when still
+          const bounce = moved > 0 ? Math.abs(Math.sin(now / 170)) * 9 : Math.abs(Math.sin(now / 420)) * 1.5;
+          const squash = moved > 0 && bounce < 1.2 ? 0.88 : 1;
+          ball.setAttribute('transform', `translate(${yx.toFixed(1)},${yy.toFixed(1)})`);
+          ballBody.setAttribute('transform', `translate(0,${(-bounce).toFixed(1)}) scale(${(1 / squash).toFixed(3)},${squash.toFixed(3)}) rotate(${yrot.toFixed(1)})`);
+          const sh = 1 - bounce / 22;
+          ballShadow.setAttribute('transform', `scale(${sh.toFixed(3)})`);
+          ballShadow.setAttribute('opacity', (0.5 + sh * 0.5).toFixed(2));
+        }
         f.el.setAttribute('transform', `translate(${cx.toFixed(1)},${cy.toFixed(1)}) scale(${dir},1)`);
         requestAnimationFrame(tick);
       }
